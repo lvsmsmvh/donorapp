@@ -13,20 +13,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DonorUA">
         <activity
-            android:name=".mvp.view.MainActivity"
+            android:name=".mvp.main.MainActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".mvp.view.SplashActivity"
+            android:name=".mvp.splash.SplashActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
 
         </activity>
         <activity
-            android:name=".mvp.view.FirstOpenActivity"
+            android:name=".mvp.registration.FirstOpenActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
-        <activity android:name=".mvp.view.FindCityActivity"
+        <activity android:name=".mvp.findregion.FindRegionActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
             <intent-filter>

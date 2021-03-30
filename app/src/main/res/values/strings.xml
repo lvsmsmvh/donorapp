@@ -9,4 +9,6 @@
     <string name="input_your_birth_date">Укажите дату Вашего рождения:</string>
     <string name="please_select_where_you_live">Пожалуйста, выберите где вы проживаете.</string>
     <string name="you_picked">Вы выбрали следующее место:</string>
+    <string name="loading">Завантажуємо...</string>
+    <string name="loading_failed">Не вдалося завантажити :(</string>
 </resources>

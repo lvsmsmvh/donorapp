@@ -13,4 +13,5 @@
     <color name="transparent_light_grey">#22777777</color>
 
     <color name="dark_grey">#666</color>
+    <color name="dark_dark_grey">#333</color>
 </resources>

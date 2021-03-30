@@ -1,6 +1,8 @@
 package com.medicalapp.donorua.utils.donorua.loaders
 
+import android.util.Log
 import com.medicalapp.donorua.utils.Api
+import com.medicalapp.donorua.utils.LogTags
 import com.medicalapp.donorua.utils.donorua.jsoup.JsoupFeatures
 import com.medicalapp.donorua.utils.donorua.model.DonorCenter
 import com.medicalapp.donorua.utils.donorua.model.DonorCenterPreview
@@ -21,11 +23,15 @@ class DonorCenterLoader {
             .select("div[class=col-md-4]")
             .select("table[class=table]")
 
+        Log.i(LogTags.TAG_API, "tables : " + rightRowElementsTables.size)
+
         val firstTable = rightRowElementsTables.eq(0)
-        val secondTable = rightRowElementsTables.eq(1)
+        val secondTable = rightRowElementsTables.eq(1) // for schedule
 
         val informationItemsElements = firstTable
-            .select("td")
+            .select("tr")
+
+        Log.i(LogTags.TAG_API, "information item elems : " + informationItemsElements.size)
 
         // title
         val title = leftRowElements
@@ -46,6 +52,9 @@ class DonorCenterLoader {
                 .text()
             descriptionArticles.add(article)
         }
+
+
+        var str = "Всього відгуків: 19. Середній рейтинг: 4,58"
 
 
         // rating

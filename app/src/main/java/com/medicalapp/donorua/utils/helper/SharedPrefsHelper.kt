@@ -2,7 +2,7 @@ package com.medicalapp.donorua.utils.helper
 
 import android.content.Context
 import com.google.gson.Gson
-import com.medicalapp.donorua.mvp.model.user.User
+import com.medicalapp.donorua.model.user.User
 import com.medicalapp.donorua.utils.SharedPrefsConst.SHARED_PREFS_IS_FIRST_TIME
 import com.medicalapp.donorua.utils.SharedPrefsConst.SHARED_PREFS_NAME
 import com.medicalapp.donorua.utils.SharedPrefsConst.SHARED_PREFS_USER_DATA
