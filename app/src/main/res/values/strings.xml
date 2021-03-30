@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">DonorUA</string>
+    <string name="go_next">Далее</string>
+    <string name="input_your_data">Введите личные данные</string>
+    <string name="name">Имя</string>
+    <string name="surname">Фамилия</string>
+    <string name="input_your_blood_type">Укажите Вашу группу крови:</string>
+    <string name="input_your_gender">Укажите Ваш пол:</string>
+    <string name="input_your_birth_date">Укажите дату Вашего рождения:</string>
+    <string name="please_select_where_you_live">Пожалуйста, выберите где вы проживаете.</string>
+    <string name="you_picked">Вы выбрали следующее место:</string>
+</resources>
