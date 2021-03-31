@@ -1,14 +1,17 @@
 <resources>
-    <string name="app_name">DonorUA</string>
-    <string name="go_next">Далее</string>
-    <string name="input_your_data">Введите личные данные</string>
-    <string name="name">Имя</string>
-    <string name="surname">Фамилия</string>
-    <string name="input_your_blood_type">Укажите Вашу группу крови:</string>
-    <string name="input_your_gender">Укажите Ваш пол:</string>
-    <string name="input_your_birth_date">Укажите дату Вашего рождения:</string>
-    <string name="please_select_where_you_live">Пожалуйста, выберите где вы проживаете.</string>
-    <string name="you_picked">Вы выбрали следующее место:</string>
-    <string name="loading">Завантажуємо...</string>
+    <string name="app_name">Донор+</string>
+    <string name="go_next">Продовжити</string>
+    <string name="input_your_data">Введіть особисті дані</string>
+    <string name="name">Ім\'я</string>
+    <string name="surname">Прізвище</string>
+    <string name="input_your_blood_type">Вкажіть Вашу групу крові:</string>
+    <string name="input_your_gender">Вкажіть Вашу стать:</string>
+    <string name="input_your_birth_date">Оберіть дату Вашого народження:</string>
+    <string name="please_select_where_you_live">Будь ласка, оберіть місце, де Ви проживаєте.</string>
+    <string name="you_picked">Ви обрали наступне місце:</string>
+    <string name="loading">Завантажуємо…</string>
     <string name="loading_failed">Не вдалося завантажити :(</string>
+    <string name="find_donor_center">Знайти донорський центр</string>
+    <string name="home_page">Головна</string>
+    <string name="profile">Профіль</string>
 </resources>

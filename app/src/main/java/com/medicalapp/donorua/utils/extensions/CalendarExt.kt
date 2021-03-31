@@ -32,13 +32,3 @@ fun Calendar.getPersonAgeInYears(): Int {
 
     return yearsDiffBetweenCalendars
 }
-
-
-
-private fun Calendar.logCalendar() {
-    Log.i(TAG_CALENDAR,
-        "\n\nYears : " + get(Calendar.YEAR) +
-        "\nMonth : " + get(Calendar.MONTH) +
-        "\nDay : " + get(Calendar.DAY_OF_MONTH)
-    )
-}

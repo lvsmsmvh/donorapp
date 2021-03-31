@@ -23,13 +23,10 @@ class SplashPresenter(
     }
 
     private fun navigate() {
-        sharedPrefsHelper.getUser().let { user ->
-            if (user == null)
-                splashView.navigateToFirstTimeActivity()
-            else if (user.placeGeo == null)
-                splashView.navigateToMainActivity()
-            else
-                splashView.navigateToMainActivity()
+        sharedPrefsHelper.getUser()?.let {
+            splashView.navigateToMainActivity()
+            return
         }
+        splashView.navigateToFirstTimeActivity()
     }
 }

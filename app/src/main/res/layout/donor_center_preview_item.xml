@@ -8,7 +8,7 @@
     android:paddingVertical="5dp">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/region_item_card_view"
+        android:id="@+id/donor_center_item_card_view"
         app:cardElevation="30dp"
         android:foreground="?android:attr/selectableItemBackground"
         android:layout_width="match_parent"
@@ -19,9 +19,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_margin="5dp">
-
             <View
                 android:layout_width="5dp"
                 android:layout_height="0dp"
@@ -30,17 +29,28 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>
             <TextView
-                android:id="@+id/region_item_region_name"
+                android:id="@+id/donor_center_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:text=""
                 android:textColor="@color/dark_dark_grey"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/imageView"
                 app:layout_constraintEnd_toStartOf="@+id/imageView"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/donor_center_address"
                 app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/donor_center_address"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:text=""
+                android:textColor="@color/dark_grey"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toStartOf="@+id/imageView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/imageView" />
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="30dp"

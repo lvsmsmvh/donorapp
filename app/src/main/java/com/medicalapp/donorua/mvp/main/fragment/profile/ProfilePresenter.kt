@@ -10,7 +10,7 @@ class ProfilePresenter(
     private val profileView: IProfileFragmentContract.IProfileFragmentView
 ): IProfileFragmentContract.IProfileFragmentPresenter {
 
-    var sharedPrefsHelper: SharedPrefsHelper = App.instance.sharedPrefs
+    private var sharedPrefsHelper: SharedPrefsHelper = App.instance.sharedPrefs
 
     init {
         setUserInfo()

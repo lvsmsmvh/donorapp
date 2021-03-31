@@ -1,8 +1,9 @@
 package com.medicalapp.donorua.mvp.findregion
 
-import android.util.Log
-import com.medicalapp.donorua.model.states.LoadingDataState
-import com.medicalapp.donorua.utils.LogTags
+import com.medicalapp.donorua.model.findcenterstates.LoadingDataState
+import com.medicalapp.donorua.model.findcenterstates.LoadingDataType
+import com.medicalapp.donorua.model.findcenterstates.ShowingContentType
+import com.medicalapp.donorua.utils.donorua.model.DonorCenterPreview
 import com.medicalapp.donorua.utils.donorua.model.Region
 
 class FindRegionPresenter(
@@ -10,20 +11,87 @@ class FindRegionPresenter(
     ) : IFindRegionContract.IFindRegionPresenter {
 
     private val donorUaApi = findRegionView.getApiInstance()
+    private var currentLoadingDataType = LoadingDataType.NONE
 
-    override fun loadData() {
-        findRegionView.moveUiToState(LoadingDataState.Loading)
-        donorUaApi.loadListOfRegions { listRegion ->
-            if (listRegion.isEmpty()) {
-                findRegionView.moveUiToState(LoadingDataState.Failed)
-            } else {
-                findRegionView.moveUiToState(LoadingDataState.Loaded)
-                findRegionView.showRegions(listRegion)
+    private fun finishLoadingData() {
+        currentLoadingDataType = LoadingDataType.NONE
+    }
+
+
+    override fun onBackPressedClick() {
+        if (currentLoadingDataType != LoadingDataType.NONE) {
+            finishLoadingData()
+            return
+        }
+
+        when (findRegionView.getCurrentShowingContentType()) {
+            ShowingContentType.SINGLE_CENTER -> {
+                findRegionView.moveUiToNewContentType(ShowingContentType.LIST_OF_CENTERS)
+            }
+            ShowingContentType.LIST_OF_CENTERS -> {
+                findRegionView.moveUiToNewContentType(ShowingContentType.LIST_OF_REGIONS)
+            }
+            ShowingContentType.LIST_OF_REGIONS -> {
+                findRegionView.exit()
             }
         }
     }
 
     override fun onRegionClick(region: Region) {
-        Log.i(LogTags.TAG_API, "on region click " + region.name)
+        loadListOfDonorCenters(region)
+    }
+
+    override fun onDonorCenterPreviewClick(centerPreview: DonorCenterPreview) {
+        donorUaApi.openDonorPreviewInWeb(centerPreview)
+    }
+
+
+    override fun loadListOfRegions() {
+        currentLoadingDataType = LoadingDataType.LIST_OF_REGIONS
+        findRegionView.moveUiToNewLoadingState(LoadingDataState.Loading)
+        donorUaApi.loadListOfRegions { listRegion ->
+            if (currentLoadingDataType == LoadingDataType.LIST_OF_REGIONS) {
+                if (listRegion.isEmpty()) {
+                    findRegionView.moveUiToNewLoadingState(LoadingDataState.Failed)
+                } else {
+                    findRegionView.moveUiToNewLoadingState(LoadingDataState.Loaded)
+                    findRegionView.moveUiToNewContentType(ShowingContentType.LIST_OF_REGIONS)
+                    findRegionView.showRegions(listRegion)
+                }
+                finishLoadingData()
+            }
+        }
+    }
+
+    override fun loadListOfDonorCenters(region: Region) {
+        currentLoadingDataType = LoadingDataType.LIST_OF_CENTERS
+        findRegionView.moveUiToNewLoadingState(LoadingDataState.Loading)
+        donorUaApi.loadCitiesForRegion(region) { listOfCenters ->
+            if (currentLoadingDataType == LoadingDataType.LIST_OF_CENTERS) {
+                if (listOfCenters.isEmpty()) {
+                    findRegionView.moveUiToNewLoadingState(LoadingDataState.Failed)
+                } else {
+                    findRegionView.moveUiToNewLoadingState(LoadingDataState.Loaded)
+                    findRegionView.moveUiToNewContentType(ShowingContentType.LIST_OF_CENTERS)
+                    findRegionView.showDonorCenters(listOfCenters)
+                }
+                finishLoadingData()
+            }
+        }
+    }
+
+    override fun loadDonorCenter(donorCenterPreview: DonorCenterPreview) {
+        currentLoadingDataType = LoadingDataType.SINGLE_CENTER
+        findRegionView.moveUiToNewLoadingState(LoadingDataState.Loading)
+        donorUaApi.loadListOfRegions { listRegion ->
+            if (currentLoadingDataType == LoadingDataType.LIST_OF_REGIONS) {
+                if (listRegion.isEmpty()) {
+                    findRegionView.moveUiToNewLoadingState(LoadingDataState.Failed)
+                } else {
+                    findRegionView.moveUiToNewLoadingState(LoadingDataState.Loaded)
+                    findRegionView.showRegions(listRegion)
+                }
+            }
+        }
     }
 }

@@ -5,13 +5,24 @@ import com.medicalapp.donorua.utils.donorua.jsoup.JsoupFeatures
 import com.medicalapp.donorua.utils.donorua.model.City
 import com.medicalapp.donorua.utils.donorua.model.DonorCenterPreview
 import com.medicalapp.donorua.utils.donorua.model.Region
+import org.jsoup.nodes.Document
+import java.lang.Exception
 
 class CitiesLoader {
     fun loadCitiesForRegion(
         region: Region
     ): List<City> {
         val listOfCities = mutableListOf<City>()
-        val listOfCitiesElements = JsoupFeatures.getDocument(Api.URL_DOMAIN + region.link)
+
+        val doc: Document
+
+        try {
+            doc = JsoupFeatures.getDocument(Api.URL_DOMAIN + region.link)
+        } catch (e: Exception) {
+            return emptyList()
+        }
+
+        val listOfCitiesElements = doc
             .select("div[class=mt-3 mb-3]")
 
         for (i in 0 until listOfCitiesElements.size) {
@@ -35,8 +46,8 @@ class CitiesLoader {
                     .text()
 
                 val centerAddress = centerElement
-                    .select("br")
                     .text()
+                    .replace(centerTitle, "")       // cuz address copies title
 
                 val centerLink = centerElement
                     .select("a")

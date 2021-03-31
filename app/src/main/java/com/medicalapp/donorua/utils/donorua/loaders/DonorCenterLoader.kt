@@ -26,7 +26,8 @@ class DonorCenterLoader {
         Log.i(LogTags.TAG_API, "tables : " + rightRowElementsTables.size)
 
         val firstTable = rightRowElementsTables.eq(0)
-        val secondTable = rightRowElementsTables.eq(1) // for schedule
+
+//        val secondTable = rightRowElementsTables.eq(1) // for schedule
 
         val informationItemsElements = firstTable
             .select("tr")
@@ -52,10 +53,6 @@ class DonorCenterLoader {
                 .text()
             descriptionArticles.add(article)
         }
-
-
-        var str = "Всього відгуків: 19. Середній рейтинг: 4,58"
-
 
         // rating
         var rating: Float? = null

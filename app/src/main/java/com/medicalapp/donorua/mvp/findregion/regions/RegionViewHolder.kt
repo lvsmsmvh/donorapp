@@ -1,4 +1,4 @@
-package com.medicalapp.donorua.mvp.findregion
+package com.medicalapp.donorua.mvp.findregion.regions
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

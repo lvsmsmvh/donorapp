@@ -1,4 +1,4 @@
-package com.medicalapp.donorua.model.states
+package com.medicalapp.donorua.model.findcenterstates
 
 enum class LoadingDataState {
     Loading, Loaded, Failed
