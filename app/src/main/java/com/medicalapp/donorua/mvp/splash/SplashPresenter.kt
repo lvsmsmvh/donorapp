@@ -11,7 +11,9 @@ class SplashPresenter(
     private val sharedPrefsHelper = App.instance.sharedPrefs
 
     init {
-        object : CountDownTimer(2000, 100) {
+        navigate()
+
+        object : CountDownTimer(500, 100) {
             override fun onTick(millisUntilFinished: Long) {
 
             }
