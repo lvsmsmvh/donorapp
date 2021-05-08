@@ -1,14 +1,11 @@
 package com.medicalapp.donorua.mvp.registration
 
 import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipGroup
 import com.medicalapp.donorua.App
-import com.medicalapp.donorua.model.firstopen.FirstOpenCollectModel
+import com.medicalapp.donorua.R
 import com.medicalapp.donorua.model.user.BloodGroup
 import com.medicalapp.donorua.model.user.Gender
-import com.medicalapp.donorua.model.user.User
-import com.medicalapp.donorua.utils.extensions.isOlderThanEighteen
-import com.medicalapp.donorua.utils.extensions.setTwentyYearsAgo
-import java.util.*
 
 class FirstOpenPresenter(
     private val firstOpenView: IFirstOpenContract.IFirstOpenView
@@ -16,84 +13,51 @@ class FirstOpenPresenter(
 
     private val sharedPrefsHelper = App.instance.sharedPrefs
 
-    init {
-        createBloodChips()
-        createGenderChips()
-        initDatePicker()
+    override fun initBloodContainer(container: ChipGroup) {
+        fillContainerWithChips(container, BloodGroup.values().map { it.nameId })
     }
 
-
-    private fun createBloodChips() {
-        val list = mutableListOf<Chip>()
-        BloodGroup.values().forEach { bloodGroup ->
-            val newBloodChip = firstOpenView.createChip().apply {
-                text = bloodGroup.nameId
-            }
-            list.add(newBloodChip)
-        }
-        firstOpenView.fillBloodTypeContainer(list)
+    override fun initGenderContainer(container: ChipGroup) {
+        fillContainerWithChips(container, Gender.values().map { it.nameId })
     }
 
-    private fun createGenderChips() {
-        val list = mutableListOf<Chip>()
-        Gender.values().forEach { gender ->
-            val newGender = firstOpenView.createChip().apply {
-                text = gender.nameId
-            }
-            list.add(newGender)
+    private fun fillContainerWithChips(container: ChipGroup, names: List<String>) {
+        names.forEach { nameForChip ->
+            val newChip = firstOpenView.getMyLayoutInflater()
+                .inflate(R.layout.chip_item_for_blood_type, container, false) as Chip
+            newChip.text = nameForChip
+            container.addView(newChip)
         }
-        firstOpenView.fillGenderTypeContainer(list)
     }
 
-    private fun initDatePicker() {
-        firstOpenView.setNewDatePickerDate(Calendar.getInstance().setTwentyYearsAgo())
-    }
+    override fun restoreUser() = sharedPrefsHelper.getUser()
 
+//    private fun validateIfCanGoNext(user: User): Boolean {
+//        if (user.name.isNullOrEmpty()) {
+//            firstOpenView.makeToastWithText("Имя не должно быть пустым!")
+//            return false
+//        }
+//
+//        if (user.surname.isNullOrEmpty()) {
+//            firstOpenView.makeToastWithText("Фамилия не должна быть пустой!")
+//            return false
+//        }
+//
+//        if (user.gender == null) {
+//            firstOpenView.makeToastWithText("Пожалуйста, укажите Ваш пол!")
+//            return false
+//        }
+//
+//        if (user.bloodGroup == null) {
+//            firstOpenView.makeToastWithText("Пожалуйста, укажите Вашу группу крови!")
+//            return false
+//        }
+//        return true
+//    }
 
-    private fun validateIfCanGoNext(collectedData: FirstOpenCollectModel): Boolean {
-        if (collectedData.name.isNullOrEmpty()) {
-            firstOpenView.makeToastWithText("Имя не должно быть пустым!")
-            return false
-        }
-
-        if (collectedData.surname.isNullOrEmpty()) {
-            firstOpenView.makeToastWithText("Фамилия не должна быть пустой!")
-            return false
-        }
-
-        if (collectedData.gender == null) {
-            firstOpenView.makeToastWithText("Пожалуйста, укажите Ваш пол!")
-            return false
-        }
-
-        if (collectedData.bloodGroup == null) {
-            firstOpenView.makeToastWithText("Пожалуйста, укажите Вашу группу крови!")
-            return false
-        }
-
-        if (!collectedData.birthDate.isOlderThanEighteen()) {
-            firstOpenView.makeToastWithText("Вам должно быть больше 18 лет!")
-            return false
-        }
-
-        return true
-    }
-
-    private fun generateNewUser(collectedData: FirstOpenCollectModel)
-        = User(
-            name = collectedData.name!!,
-            surname = collectedData.surname!!,
-            gender = collectedData.gender!!,
-            bloodGroup = collectedData.bloodGroup!!,
-            birthDate = collectedData.birthDate
-        )
 
     override fun onSubmitClick() {
-        firstOpenView.collectData().apply {
-            if (validateIfCanGoNext(this)) {
-                sharedPrefsHelper.saveUser(generateNewUser(this))
-                firstOpenView.navigateToMainActivity()
-            }
-        }
+        sharedPrefsHelper.saveUser(firstOpenView.collectData())
+        firstOpenView.navigateToMainActivity()
     }
 }

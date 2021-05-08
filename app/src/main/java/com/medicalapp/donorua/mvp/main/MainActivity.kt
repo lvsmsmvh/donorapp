@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
             return@setOnNavigationItemSelectedListener true
         }
 
-        // set first open screen fragment
+        // set first open screen fragment as HomeFragment
         simpleNavigate(HomeFragment())
     }
 

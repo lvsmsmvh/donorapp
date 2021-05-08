@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.medicalapp.donorua.R
+import com.medicalapp.donorua.mvp.capturereceipt.CaptureReceiptActivity
 import com.medicalapp.donorua.mvp.findregion.FindRegionActivity
+import com.medicalapp.donorua.mvp.info.InfoActivity
 import com.medicalapp.donorua.utils.extensions.simpleNavigate
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -27,8 +29,17 @@ class HomeFragment : Fragment(R.layout.fragment_home),
         fragment_home_button_find_donor.setOnClickListener {
             presenter.onFindDonorClick()
         }
+        fragment_home_button_info_for_donor.setOnClickListener {
+            presenter.onInfoForDonorClick()
+        }
     }
 
     override fun navigateToFindCityActivity() =
         requireActivity().simpleNavigate(FindRegionActivity::class.java)
+
+    override fun navigateToCaptureReceiptActivity() =
+        requireActivity().simpleNavigate(CaptureReceiptActivity::class.java)
+
+    override fun navigateToInfoActivity() =
+        requireActivity().simpleNavigate(InfoActivity::class.java)
 }

@@ -1,15 +1,15 @@
 package com.medicalapp.donorua.mvp.registration
 
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.chip.Chip
 import com.medicalapp.donorua.R
 import com.medicalapp.donorua.mvp.main.MainActivity
-import com.medicalapp.donorua.model.firstopen.FirstOpenCollectModel
 import com.medicalapp.donorua.model.user.BloodGroup
 import com.medicalapp.donorua.model.user.Gender
+import com.medicalapp.donorua.model.user.User
+import com.medicalapp.donorua.utils.extensions.checkedChipText
+import com.medicalapp.donorua.utils.extensions.findChipWithTheTextAndMarkIt
 import com.medicalapp.donorua.utils.extensions.simpleNavigateAndFinishAfter
 import kotlinx.android.synthetic.main.first_open_activity.*
 import java.util.*
@@ -22,9 +22,10 @@ class FirstOpenActivity: AppCompatActivity(), IFirstOpenContract.IFirstOpenView 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.first_open_activity)
 
-        initControl()
-
         presenter = FirstOpenPresenter(this)
+
+        initControl()
+        initData()
     }
 
     private fun initControl() {
@@ -33,82 +34,72 @@ class FirstOpenActivity: AppCompatActivity(), IFirstOpenContract.IFirstOpenView 
         }
     }
 
-
-    override fun setNewDatePickerDate(calendar: Calendar) {
+    private fun initData() {
         first_open_date_picker.maxDate = Calendar.getInstance().timeInMillis
-        first_open_date_picker.init(
-            calendar.get(Calendar.YEAR),
-            calendar.get(Calendar.MONTH),
-            calendar.get(Calendar.DAY_OF_MONTH),
-            null
-        )
+
+        presenter.initBloodContainer(first_open_blood_types_container)
+        presenter.initGenderContainer(first_open_gender_types_container)
+
+        applyRestoredUser(presenter.restoreUser())
     }
 
-    override fun createChip() = layoutInflater.inflate(
-        R.layout.chip_item_for_blood_type,
-        first_open_blood_types_container,
-        false
-    ) as Chip
+    private fun applyRestoredUser(user: User) {
+        user.name?.let { first_open_et_name.setText(it) }
+        user.surname?.let { first_open_et_surname.setText(it) }
 
-    override fun fillBloodTypeContainer(list: List<Chip>) {
-        list.forEach {
-            first_open_blood_types_container.addView(it)
+        user.gender?.let {
+            first_open_gender_types_container.findChipWithTheTextAndMarkIt(it.nameId)
+        }
+
+        user.bloodGroup?.let {
+            first_open_blood_types_container.findChipWithTheTextAndMarkIt(it.nameId)
+        }
+
+        user.birthDate.let { calendar ->
+            first_open_date_picker.init(
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH),
+                null
+            )
         }
     }
 
-    override fun fillGenderTypeContainer(list: List<Chip>) {
-        list.forEach {
-            first_open_gender_types_container.addView(it)
-        }
-    }
-
-    override fun makeToastWithText(str: String) {
-        Toast.makeText(this, str, Toast.LENGTH_SHORT).show()
-    }
 
 
-    override fun collectData() : FirstOpenCollectModel {
-        val name = first_open_et_name.text.let {
+
+    override fun collectData() : User {
+        val user = User()
+
+        user.name = first_open_et_name.text.let {
             if (it.isNullOrBlank()) null else it.toString()
         }
 
-        val surname = first_open_et_surname.text.let {
+        user.surname = first_open_et_surname.text.let {
             if (it.isNullOrBlank()) null else it.toString()
         }
 
-        val gender = first_open_gender_types_container.checkedChipId.let { chipId ->
-            if (chipId == View.NO_ID)
-                null
-            else
-                Gender.values().first { gender ->
-                    gender.nameId == first_open_gender_types_container.findViewById<Chip>(chipId).text
-                }
+        first_open_gender_types_container.checkedChipText()?.let {
+            user.gender = Gender.valueOf(it)
         }
 
-        val bloodGroup = first_open_blood_types_container.checkedChipId.let { chipId ->
-            if (chipId == View.NO_ID)
-                null
-            else
-                BloodGroup.values().first { bloodGroup ->
-                    bloodGroup.nameId == first_open_blood_types_container.findViewById<Chip>(chipId).text
-                }
+        first_open_blood_types_container.checkedChipText()?.let {
+            user.bloodGroup = BloodGroup.valueOf(it)
         }
 
-        val birthDate = Calendar.getInstance().apply {
+        user.birthDate = Calendar.getInstance().apply {
             set(Calendar.DAY_OF_MONTH, first_open_date_picker.dayOfMonth)
             set(Calendar.MONTH, first_open_date_picker.month)
             set(Calendar.YEAR, first_open_date_picker.year)
         }
 
-
-        return FirstOpenCollectModel(
-            name = name,
-            surname = surname,
-            gender = gender,
-            bloodGroup = bloodGroup,
-            birthDate = birthDate
-        )
+        return user
     }
+
+    override fun makeToastWithText(str: String) =
+        Toast.makeText(this, str, Toast.LENGTH_SHORT).show()
+
+    override fun getMyLayoutInflater() = layoutInflater
 
     override fun navigateToMainActivity() =
         simpleNavigateAndFinishAfter(MainActivity::class.java)

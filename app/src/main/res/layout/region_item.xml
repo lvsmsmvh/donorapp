@@ -37,12 +37,12 @@
                 android:text=""
                 android:textColor="@color/dark_dark_grey"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/imageView"
-                app:layout_constraintEnd_toStartOf="@+id/imageView"
+                app:layout_constraintBottom_toTopOf="@+id/info_image"
+                app:layout_constraintEnd_toStartOf="@+id/info_image"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/info_image"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/ic_baseline_arrow_forward_24"

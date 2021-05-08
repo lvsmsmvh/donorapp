@@ -3,6 +3,7 @@
     package="com.medicalapp.donorua">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:name=".App"
@@ -12,6 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DonorUA">
+
         <activity
             android:name=".mvp.main.MainActivity"
             android:launchMode="singleTask"
@@ -30,7 +32,22 @@
             android:name=".mvp.registration.FirstOpenActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
+        <activity android:name=".mvp.infodetails.InfoDetailsActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"/>
         <activity android:name=".mvp.findregion.FindRegionActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".mvp.capturereceipt.CaptureReceiptActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".mvp.outputreceipt.OutputReceiptActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".mvp.info.InfoActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
         </activity>

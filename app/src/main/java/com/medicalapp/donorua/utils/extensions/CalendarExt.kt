@@ -1,13 +1,17 @@
 package com.medicalapp.donorua.utils.extensions
 
-import android.util.Log
-import com.medicalapp.donorua.utils.LogTags.TAG_CALENDAR
 import java.util.*
 
-fun Calendar.setTwentyYearsAgo(): Calendar {
+fun Calendar.defaultDate(): Calendar {
     set(Calendar.YEAR, get(Calendar.YEAR) - 20)
     return this
 }
+
+fun defaultCalendarDate() = Calendar.getInstance().apply {
+    set(Calendar.YEAR, 2000)
+    set(Calendar.MONTH, 1)
+    set(Calendar.DAY_OF_MONTH, 1)
+} // 01.01.2000
 
 fun Calendar.isOlderThanEighteen(): Boolean {
     val calendarEighteenYearsAgo = Calendar.getInstance().apply {

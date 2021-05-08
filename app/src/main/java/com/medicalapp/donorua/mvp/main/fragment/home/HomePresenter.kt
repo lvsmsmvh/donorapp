@@ -7,4 +7,12 @@ class HomePresenter(
     override fun onFindDonorClick() {
         homeView.navigateToFindCityActivity()
     }
+
+    override fun onCaptureReceiptClick() {
+        homeView.navigateToCaptureReceiptActivity()
+    }
+
+    override fun onInfoForDonorClick() {
+        homeView.navigateToInfoActivity()
+    }
 }

@@ -1,34 +1,19 @@
 package com.medicalapp.donorua.mvp.splash
 
 import android.os.CountDownTimer
-import com.medicalapp.donorua.App
 
 class SplashPresenter(
     private val splashView: ISplashContract.ISplashView,
 ) : ISplashContract.ISplashPresenter
 {
 
-    private val sharedPrefsHelper = App.instance.sharedPrefs
+    val timeWaitMs = 1000L      // 1s
 
     init {
-        navigate()
+        object : CountDownTimer(timeWaitMs, timeWaitMs) {
+            override fun onTick(millisUntilFinished: Long) {}
 
-        object : CountDownTimer(500, 100) {
-            override fun onTick(millisUntilFinished: Long) {
-
-            }
-
-            override fun onFinish() {
-                navigate()
-            }
+            override fun onFinish() { splashView.navigateToMainActivity() }
         }.start()
-    }
-
-    private fun navigate() {
-        sharedPrefsHelper.getUser()?.let {
-            splashView.navigateToMainActivity()
-            return
-        }
-        splashView.navigateToFirstTimeActivity()
     }
 }

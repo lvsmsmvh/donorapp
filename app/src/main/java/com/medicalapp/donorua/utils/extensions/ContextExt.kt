@@ -6,7 +6,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 
-
 fun Context.drawable(id: Int) = ContextCompat.getDrawable(this, id)
 
 fun Activity.simpleNavigate(name: Class<out AppCompatActivity>) =

@@ -5,6 +5,6 @@ interface ISplashContract {
 
     interface ISplashView {
         fun navigateToMainActivity()
-        fun navigateToFirstTimeActivity()
+//        fun navigateToFirstTimeActivity()
     }
 }

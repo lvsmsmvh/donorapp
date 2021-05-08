@@ -1,21 +1,22 @@
 package com.medicalapp.donorua.mvp.registration
 
-import com.google.android.material.chip.Chip
-import com.medicalapp.donorua.model.firstopen.FirstOpenCollectModel
-import java.util.*
+import android.view.LayoutInflater
+import com.google.android.material.chip.ChipGroup
+import com.medicalapp.donorua.model.user.User
 
 interface IFirstOpenContract {
+
     interface IFirstOpenPresenter {
+        fun initBloodContainer(container: ChipGroup)
+        fun initGenderContainer(container: ChipGroup)
+        fun restoreUser() : User
         fun onSubmitClick()
     }
 
     interface IFirstOpenView {
         fun makeToastWithText(str: String)
-        fun collectData(): FirstOpenCollectModel
-        fun setNewDatePickerDate(calendar: Calendar)
+        fun collectData(): User
+        fun getMyLayoutInflater(): LayoutInflater
         fun navigateToMainActivity()
-        fun createChip() : Chip
-        fun fillBloodTypeContainer(list: List<Chip>)
-        fun fillGenderTypeContainer(list: List<Chip>)
     }
 }

@@ -9,6 +9,8 @@ object LogTags {
     const val TAG_CHIP = "tag_chip"
     const val TAG_CALENDAR = "tag_calendar"
     const val TAG_API = "tag_api"
+    const val TAG_PHOTO = "tag_photo"
+    const val TAG_RECYCLER = "tag_recycler"
 }
 
 object Api {

@@ -13,14 +13,11 @@ class SplashActivity : AppCompatActivity(), ISplashContract.ISplashView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.splash_activity)
+        setContentView(R.layout.activity_splash)
 
         splashPresenter = SplashPresenter(this)
     }
 
     override fun navigateToMainActivity() =
         simpleNavigateAndFinishAfter(MainActivity::class.java)
-
-    override fun navigateToFirstTimeActivity() =
-        simpleNavigateAndFinishAfter(FirstOpenActivity::class.java)
 }
