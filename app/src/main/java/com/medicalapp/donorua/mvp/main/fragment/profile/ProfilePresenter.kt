@@ -4,7 +4,9 @@ import com.medicalapp.donorua.App
 import com.medicalapp.donorua.R
 import com.medicalapp.donorua.model.user.Gender
 import com.medicalapp.donorua.utils.extensions.getPersonAgeInYears
+import com.medicalapp.donorua.utils.extensions.isNotRegistered
 import com.medicalapp.donorua.utils.helper.SharedPrefsHelper
+import java.lang.Exception
 
 class ProfilePresenter(
     private val profileView: IProfileFragmentContract.IProfileFragmentView
@@ -17,19 +19,21 @@ class ProfilePresenter(
     }
 
     private fun setUserInfo() {
-        sharedPrefsHelper.getUser()?.let { user ->
-            profileView.setUserName(user.name)
+        val user = sharedPrefsHelper.getUser()
 
-            profileView.setUserSurname(user.surname)
+        if (user.isNotRegistered()) {
+            throw Exception("User was not registered, but HomeFragment has been created.")
+        }
 
-            profileView.setProfileIcon(when (user.gender) {
+        with (user) {
+            profileView.setUserName(name!!)
+            profileView.setUserSurname(name!!)
+            profileView.setProfileIcon(when (gender!!) {
                 Gender.MALE -> R.drawable.profile_icon_man
                 Gender.FEMALE -> R.drawable.profile_icon_woman
                 Gender.OTHER -> R.drawable.profile_icon_incognito
             })
-
-            profileView.setUserBloodGroup(user.bloodGroup)
-
+            profileView.setUserBloodGroup(user.bloodGroup!!)
             profileView.setUserAge(user.birthDate.getPersonAgeInYears())
         }
     }

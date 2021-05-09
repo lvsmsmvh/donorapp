@@ -7,6 +7,26 @@
     android:layout_height="match_parent"
     tools:context=".mvp.main.MainActivity">
 
+<!--    <com.sergivonavi.materialbanner.Banner-->
+<!--        android:id="@+id/banner"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:visibility="visible"-->
+<!--        app:buttonLeftText="Dismiss"-->
+<!--        app:buttonRightText="Register"-->
+<!--        app:icon="@drawable/ic_reg"-->
+<!--        app:messageText="@string/reg_please" />-->
+
+    <com.cesar.materialcomponents.Banner
+        android:id="@+id/banner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ccc"
+        app:bannerBackgroundColor="@color/weird_green"
+        app:contentText="@string/reg_please"
+        app:leftButtonText="@string/later"
+        app:rightButtonText="@string/OK"/>
+
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
