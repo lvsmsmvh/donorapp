@@ -64,7 +64,7 @@ dependencies {
 
 
     // banner
-    implementation "com.sergivonavi:materialbanner:1.2.0"
+//    implementation "com.sergivonavi:materialbanner:1.2.0"
 
     // banner 2
     implementation 'com.github.cesarferreira:MaterialComponent.Banner:0.14.0'

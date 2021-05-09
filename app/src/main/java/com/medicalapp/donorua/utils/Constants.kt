@@ -11,6 +11,7 @@ object LogTags {
     const val TAG_API = "tag_api"
     const val TAG_PHOTO = "tag_photo"
     const val TAG_RECYCLER = "tag_recycler"
+    const val TAG_USER = "donorua_user"
 }
 
 object Api {

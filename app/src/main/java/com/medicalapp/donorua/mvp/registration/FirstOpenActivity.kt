@@ -9,6 +9,7 @@ import com.medicalapp.donorua.model.user.BloodGroup
 import com.medicalapp.donorua.model.user.Gender
 import com.medicalapp.donorua.model.user.User
 import com.medicalapp.donorua.utils.extensions.checkedChipText
+import com.medicalapp.donorua.utils.extensions.currentUser
 import com.medicalapp.donorua.utils.extensions.findChipWithTheTextAndMarkIt
 import com.medicalapp.donorua.utils.extensions.simpleNavigateAndFinishAfter
 import kotlinx.android.synthetic.main.first_open_activity.*
@@ -40,31 +41,32 @@ class FirstOpenActivity: AppCompatActivity(), IFirstOpenContract.IFirstOpenView 
         presenter.initBloodContainer(first_open_blood_types_container)
         presenter.initGenderContainer(first_open_gender_types_container)
 
-        applyRestoredUser(presenter.restoreUser())
+        fillFieldsWithCurrentUserData()
     }
 
-    private fun applyRestoredUser(user: User) {
-        user.name?.let { first_open_et_name.setText(it) }
-        user.surname?.let { first_open_et_surname.setText(it) }
+    private fun fillFieldsWithCurrentUserData() {
+        with (currentUser) {
+            name?.let { first_open_et_name.setText(it) }
+            surname?.let { first_open_et_surname.setText(it) }
 
-        user.gender?.let {
-            first_open_gender_types_container.findChipWithTheTextAndMarkIt(it.nameId)
-        }
+            gender?.let {
+                first_open_gender_types_container.findChipWithTheTextAndMarkIt(it.nameId)
+            }
 
-        user.bloodGroup?.let {
-            first_open_blood_types_container.findChipWithTheTextAndMarkIt(it.nameId)
-        }
+            bloodGroup?.let {
+                first_open_blood_types_container.findChipWithTheTextAndMarkIt(it.nameId)
+            }
 
-        user.birthDate.let { calendar ->
-            first_open_date_picker.init(
-                calendar.get(Calendar.YEAR),
-                calendar.get(Calendar.MONTH),
-                calendar.get(Calendar.DAY_OF_MONTH),
-                null
-            )
+            birthDate.let { calendar ->
+                first_open_date_picker.init(
+                    calendar.get(Calendar.YEAR),
+                    calendar.get(Calendar.MONTH),
+                    calendar.get(Calendar.DAY_OF_MONTH),
+                    null
+                )
+            }
         }
     }
-
 
 
 
@@ -79,12 +81,12 @@ class FirstOpenActivity: AppCompatActivity(), IFirstOpenContract.IFirstOpenView 
             if (it.isNullOrBlank()) null else it.toString()
         }
 
-        first_open_gender_types_container.checkedChipText()?.let {
-            user.gender = Gender.valueOf(it)
+        first_open_gender_types_container.checkedChipText()?.let { chipText ->
+            user.gender = Gender.values().first { it.nameId == chipText }
         }
 
-        first_open_blood_types_container.checkedChipText()?.let {
-            user.bloodGroup = BloodGroup.valueOf(it)
+        first_open_blood_types_container.checkedChipText()?.let { chipText ->
+            user.bloodGroup = BloodGroup.values().first { it.nameId == chipText }
         }
 
         user.birthDate = Calendar.getInstance().apply {
@@ -94,6 +96,10 @@ class FirstOpenActivity: AppCompatActivity(), IFirstOpenContract.IFirstOpenView 
         }
 
         return user
+    }
+
+    override fun onBackPressed() {
+        presenter.onBackPressedClick()
     }
 
     override fun makeToastWithText(str: String) =

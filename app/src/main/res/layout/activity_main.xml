@@ -22,7 +22,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#ccc"
-        app:bannerBackgroundColor="@color/weird_green"
+        android:visibility="gone"
+        app:bannerBackgroundColor="@color/green_weird"
+        app:icon="@drawable/ic_reg"
         app:contentText="@string/reg_please"
         app:leftButtonText="@string/later"
         app:rightButtonText="@string/OK"/>

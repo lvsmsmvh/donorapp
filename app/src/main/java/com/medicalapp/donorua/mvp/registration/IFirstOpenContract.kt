@@ -9,8 +9,8 @@ interface IFirstOpenContract {
     interface IFirstOpenPresenter {
         fun initBloodContainer(container: ChipGroup)
         fun initGenderContainer(container: ChipGroup)
-        fun restoreUser() : User
         fun onSubmitClick()
+        fun onBackPressedClick()
     }
 
     interface IFirstOpenView {
