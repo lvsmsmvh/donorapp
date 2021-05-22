@@ -16,6 +16,8 @@
     <string name="profile">Профіль</string>
     <string name="take_photo_of_a_receipt">Сфотографувати чек</string>
     <string name="choose_a_photo_from_gallery">Обрати фото з галереї</string>
+    <string name="make_a_photo_with_camera">Зробити фото</string>
+    <string name="save_a_new_check">Зберегти чек</string>
     <string name="info_for_donor">Пам\'ятка донора крові</string>
 
 
@@ -313,4 +315,5 @@
     <string name="fill_your_surname">Заповніть, будь ласка, Ваше прізвище!</string>
     <string name="fill_your_gender">Оберіть, будь ласка, Вашу стать!</string>
     <string name="fill_your_blood_group">Оберіть, будь ласка, Вашу групу крові!</string>
+    <string name="take_photo_or_pick_from_gallery">Зробіть фото чеку або оберіть з галереї</string>
 </resources>

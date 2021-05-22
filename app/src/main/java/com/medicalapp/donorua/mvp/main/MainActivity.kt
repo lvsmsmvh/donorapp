@@ -5,8 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import com.google.android.material.snackbar.Snackbar
-import com.medicalapp.donorua.App
 import com.medicalapp.donorua.R
 import com.medicalapp.donorua.mvp.main.fragment.home.HomeFragment
 import com.medicalapp.donorua.mvp.main.fragment.profile.ProfileFragment

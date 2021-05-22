@@ -5,14 +5,13 @@ import android.net.Uri
 
 interface IOutputReceiptContract {
     interface IOutputReceiptView {
-        fun getUri(): Uri
         fun outputText(text: String)
         fun getContext(): Context
-        fun requestWritePermission()
+//        fun requestWritePermission()
     }
 
     interface IOutputReceiptPresenter {
-        fun onGotWritePermission()
-        fun onInit()
+//        fun onGotWritePermission()
+        fun gotUriFromExtras(uri: Uri)
     }
 }

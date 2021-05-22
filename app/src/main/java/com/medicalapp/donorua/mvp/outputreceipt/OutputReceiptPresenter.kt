@@ -1,12 +1,10 @@
 package com.medicalapp.donorua.mvp.outputreceipt
 
 
-import android.app.Activity
-import android.os.Environment
-import android.util.Log
-import com.medicalapp.donorua.utils.LogTags
-import com.medicalapp.donorua.utils.extensions.toBitmap
-import java.io.*
+import android.net.Uri
+import com.google.mlkit.vision.common.InputImage
+import com.google.mlkit.vision.text.Text
+import com.google.mlkit.vision.text.TextRecognition
 
 
 class OutputReceiptPresenter(
@@ -14,18 +12,56 @@ class OutputReceiptPresenter(
     ): IOutputReceiptContract.IOutputReceiptPresenter
 {
 
-    private val myDir = view.getContext().getExternalFilesDir(Environment.MEDIA_MOUNTED)
-    private val dataPath = myDir?.absolutePath + "/TesseractSample/"
-    private val tessdata = "tessdata"
-    private val uri = view.getUri()
-    override fun onGotWritePermission() {
+    val context = view.getContext()
 
+//    private val myDir = view.getContext().getExternalFilesDir(Environment.MEDIA_MOUNTED)
+//    private val dataPath = myDir?.absolutePath + "/TesseractSample/"
+//    private val tessdata = "tessdata"
+
+
+    override fun gotUriFromExtras(uri: Uri) {
+        output("Proceeding file")
+        val image = InputImage.fromFilePath(context, uri)
+
+        val recognizer = TextRecognition.getClient()
+        output("Waiting for result...")
+
+        val result = recognizer.process(image)
+            .addOnSuccessListener { visionText ->
+                gotTextFromImage(visionText)
+            }
+            .addOnFailureListener { e ->
+                output("Failed with error: " + e.message)
+                // Task failed with an exception
+                // ...
+            }
     }
 
-    override fun onInit() {
-        Log.i(LogTags.TAG_PHOTO, "Please allow")
-        view.outputText("Please, allow write permission.")
-        view.requestWritePermission()
+
+    private fun gotTextFromImage(text: Text) {
+        var result = ""
+        for (block in text.textBlocks) {
+            val blockText = block.text
+            result += "\n\n\nblock \n $blockText"
+
+            val blockCornerPoints = block.cornerPoints
+            val blockFrame = block.boundingBox
+            for (line in block.lines) {
+                val lineText = line.text
+                val lineCornerPoints = line.cornerPoints
+                val lineFrame = line.boundingBox
+                for (element in line.elements) {
+                    val elementText = element.text
+                    val elementCornerPoints = element.cornerPoints
+                    val elementFrame = element.boundingBox
+                }
+            }
+        }
+
+        output(result)
     }
 
+    private fun output(string: String) {
+        view.outputText(string)
+    }
 }

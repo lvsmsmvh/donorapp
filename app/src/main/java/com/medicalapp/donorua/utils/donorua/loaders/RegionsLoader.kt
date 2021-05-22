@@ -35,10 +35,7 @@ class RegionsLoader {
                 .attr("href")
 
             listOfRegions.add(
-                Region(
-                    title,
-                    link
-                )
+                Region(title, link)
             )
         }
         return listOfRegions

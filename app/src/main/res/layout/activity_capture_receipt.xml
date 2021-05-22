@@ -5,24 +5,64 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/capture_receipt_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/dark_dark_grey"
+        android:textSize="16sp"
+        android:layout_marginVertical="10sp"
+        android:layout_marginHorizontal="20sp"
+        android:text="@string/take_photo_or_pick_from_gallery"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <androidx.camera.view.PreviewView
+        android:id="@+id/capture_receipt_preview_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/capture_receipt_text"
+        app:layout_constraintBottom_toTopOf="@id/capture_receipt_ll_buttons"/>
+
+    <LinearLayout
+        android:id="@+id/capture_receipt_ll_buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingVertical="20dp"
+        android:paddingHorizontal="5dp"
         app:layout_constraintBottom_toBottomOf="parent">
+        <View
+            android:layout_width="20dp"
+            android:layout_height="0dp"/>
+        <Button
+            android:id="@+id/capture_receipt_button_make_a_photo"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/ic_camera"
+            android:drawableTint="@color/white"
+            android:background="@drawable/bg_btn_submit"
+            android:text="@string/make_a_photo_with_camera"
+            android:textSize="12sp"
+            android:textColor="@color/white"/>
+        <View
+            android:layout_width="50dp"
+            android:layout_height="0dp"/>
         <Button
             android:id="@+id/capture_receipt_button_choose_a_photo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/ic_gallery"
+            android:drawableTint="@color/white"
             android:background="@drawable/bg_btn_submit"
             android:text="@string/choose_a_photo_from_gallery"
             android:textSize="12sp"
             android:textColor="@color/white"/>
         <View
-            android:layout_width="match_parent"
-            android:layout_height="30dp"/>
+            android:layout_width="20dp"
+            android:layout_height="0dp"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

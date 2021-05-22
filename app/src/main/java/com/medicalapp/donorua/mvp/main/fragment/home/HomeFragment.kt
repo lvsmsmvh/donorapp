@@ -27,11 +27,15 @@ class HomeFragment : Fragment(R.layout.fragment_home),
 
     private fun initControl() {
         fragment_home_button_find_donor.setOnClickListener {
-            presenter.onFindDonorClick()
+
         }
         fragment_home_button_info_for_donor.setOnClickListener {
             presenter.onInfoForDonorClick()
         }
+        fragment_home_button_new_check.setOnClickListener {
+            presenter.onSaveACheckClick()
+        }
+
     }
 
     override fun navigateToFindCityActivity() =

@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "715727355943",
+    "firebase_url": "https://donorapp-5fda0-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "donorapp-5fda0",
     "storage_bucket": "donorapp-5fda0.appspot.com"
   },
@@ -14,7 +15,7 @@
       },
       "oauth_client": [
         {
-          "client_id": "715727355943-ujfcpmos8n0tep6q9fhm252375a9puse.apps.googleusercontent.com",
+          "client_id": "715727355943-sq3a1u4h5dtc8rpqop0drm19ieeq1kp6.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -27,7 +28,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "715727355943-ujfcpmos8n0tep6q9fhm252375a9puse.apps.googleusercontent.com",
+              "client_id": "715727355943-sq3a1u4h5dtc8rpqop0drm19ieeq1kp6.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

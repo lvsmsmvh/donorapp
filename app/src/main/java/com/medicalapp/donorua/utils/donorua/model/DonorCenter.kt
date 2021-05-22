@@ -1,15 +1,17 @@
 package com.medicalapp.donorua.utils.donorua.model
 
 data class DonorCenter(
-    val name: String,
-    val description: List<String>,
-    val rating: Float?,
-    val address: String?,
-    val webPageUrl: String?,
-    val phoneNumbers: List<String>,
-    val email: String?,
-    val linkOnGoogleMaps: String?,
-    val instagram: String?,
-    val facebook: String?,
-    //    val weekSchedule: WeekSchedule
+    val id: Int? = null,
+    val urlInDonorUa: String? = null,
+    val cityName: String? = null,
+    val regionName: String? = null,
+    val name: String? = null,
+    val description: List<String>? = null,
+    val rating: Double? = null,
+    val address: String? = null,
+    val webPageUrl: String? = null,
+    val email: String? = null,
+    val linkOnGoogleMaps: String? = null,
+    val instagram: String? = null,
+    val facebook: String? = null,
 )

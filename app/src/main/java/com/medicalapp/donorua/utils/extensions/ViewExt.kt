@@ -1,6 +1,7 @@
 package com.medicalapp.donorua.utils.extensions
 
 import android.view.View
+import android.widget.Button
 import androidx.core.view.forEach
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
@@ -11,6 +12,16 @@ fun View.show() {
 
 fun View.hide() {
     visibility = View.GONE
+}
+
+fun Button.makeUnclickable() {
+    alpha = 0.5f
+    isClickable = false
+}
+
+fun Button.makeClickable() {
+    alpha = 1f
+    isClickable = true
 }
 
 fun ChipGroup.findChipWithTheTextAndMarkIt(str: String) {

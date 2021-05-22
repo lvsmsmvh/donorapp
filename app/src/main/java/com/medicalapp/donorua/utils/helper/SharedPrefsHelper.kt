@@ -3,8 +3,10 @@ package com.medicalapp.donorua.utils.helper
 import android.content.Context
 import com.google.gson.Gson
 import com.medicalapp.donorua.model.user.User
+import com.medicalapp.donorua.utils.SharedPrefsConst.SHARED_PREFS_DONOR_CENTER
 import com.medicalapp.donorua.utils.SharedPrefsConst.SHARED_PREFS_NAME
 import com.medicalapp.donorua.utils.SharedPrefsConst.SHARED_PREFS_USER_DATA
+import com.medicalapp.donorua.utils.donorua.model.DonorCenter
 
 
 class SharedPrefsHelper(context: Context) {
@@ -16,6 +18,17 @@ class SharedPrefsHelper(context: Context) {
         Context.MODE_PRIVATE
     )
 
+    fun saveListOfCenters(list: List<DonorCenter>) {
+        val str = parseListOfCentersToStr(list)
+        sharedPreferences.edit().putString(SHARED_PREFS_DONOR_CENTER, str).apply()
+    }
+
+    fun getListOfCenters(): List<DonorCenter>? {
+        sharedPreferences.getString(SHARED_PREFS_DONOR_CENTER, null)?.let { str ->
+            return parseListOfCentersFromStr(str)
+        }
+        return null
+    }
 
     fun saveUser(user: User) {
         sharedPreferences.edit().putString(SHARED_PREFS_USER_DATA, parseUserToStr(user)).apply()
@@ -28,6 +41,16 @@ class SharedPrefsHelper(context: Context) {
         return User()
     }
 
-    private fun parseUserFromStr(str: String): User = gson.fromJson(str, User::class.java)
-    private fun parseUserToStr(user: User): String = gson.toJson(user)
+    data class AllDonorCenters(val listOfCenters: List<DonorCenter>)
+
+    private fun parseListOfCentersToStr(list: List<DonorCenter>): String =
+        gson.toJson(AllDonorCenters(list))
+    private fun parseListOfCentersFromStr(str: String): List<DonorCenter> =
+        gson.fromJson(str, AllDonorCenters::class.java).listOfCenters
+
+    private fun parseUserToStr(user: User): String =
+        gson.toJson(user)
+    private fun parseUserFromStr(str: String): User =
+        gson.fromJson(str, User::class.java)
+
 }

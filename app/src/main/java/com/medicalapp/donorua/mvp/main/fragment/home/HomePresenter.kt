@@ -1,5 +1,7 @@
 package com.medicalapp.donorua.mvp.main.fragment.home
 
+import com.medicalapp.donorua.utils.donorua.DonorUaApi
+
 class HomePresenter(
     private val homeView: IHomeFragmentContract.IHomeFragmentView
 ): IHomeFragmentContract.IHomeFragmentPresenter {
@@ -8,7 +10,7 @@ class HomePresenter(
         homeView.navigateToFindCityActivity()
     }
 
-    override fun onCaptureReceiptClick() {
+    override fun onSaveACheckClick() {
         homeView.navigateToCaptureReceiptActivity()
     }
 

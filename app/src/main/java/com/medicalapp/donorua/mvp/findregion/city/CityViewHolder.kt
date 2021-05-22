@@ -15,7 +15,7 @@ class CityViewHolder(private val cityView: View) : RecyclerView.ViewHolder(cityV
             city_item_recycler_view.layoutManager = LinearLayoutManager(cityView.context)
 
             val adapter = DonorCenterListAdapter()
-            adapter.set(city.centers, onCLickedListener)
+//            adapter.set(city.centers, onCLickedListener)
             city_item_recycler_view.adapter = adapter
         }
     }

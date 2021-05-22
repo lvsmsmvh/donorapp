@@ -49,49 +49,49 @@ class FindRegionPresenter(
     override fun loadListOfRegions() {
         currentLoadingDataType = LoadingDataType.LIST_OF_REGIONS
         findRegionView.moveUiToNewLoadingState(LoadingDataState.Loading)
-        donorUaApi.loadListOfRegions { listRegion ->
-            if (currentLoadingDataType == LoadingDataType.LIST_OF_REGIONS) {
-                if (listRegion.isEmpty()) {
-                    findRegionView.moveUiToNewLoadingState(LoadingDataState.Failed)
-                } else {
-                    findRegionView.moveUiToNewLoadingState(LoadingDataState.Loaded)
-                    findRegionView.moveUiToNewContentType(ShowingContentType.LIST_OF_REGIONS)
-                    findRegionView.showRegions(listRegion)
-                }
-                finishLoadingData()
-            }
-        }
+//        donorUaApi.apiloadListOfRegions { listRegion ->
+//            if (currentLoadingDataType == LoadingDataType.LIST_OF_REGIONS) {
+//                if (listRegion.isEmpty()) {
+//                    findRegionView.moveUiToNewLoadingState(LoadingDataState.Failed)
+//                } else {
+//                    findRegionView.moveUiToNewLoadingState(LoadingDataState.Loaded)
+//                    findRegionView.moveUiToNewContentType(ShowingContentType.LIST_OF_REGIONS)
+//                    findRegionView.showRegions(listRegion)
+//                }
+//                finishLoadingData()
+//            }
+//        }
     }
 
     override fun loadListOfDonorCenters(region: Region) {
         currentLoadingDataType = LoadingDataType.LIST_OF_CENTERS
         findRegionView.moveUiToNewLoadingState(LoadingDataState.Loading)
-        donorUaApi.loadCitiesForRegion(region) { listOfCenters ->
-            if (currentLoadingDataType == LoadingDataType.LIST_OF_CENTERS) {
-                if (listOfCenters.isEmpty()) {
-                    findRegionView.moveUiToNewLoadingState(LoadingDataState.Failed)
-                } else {
-                    findRegionView.moveUiToNewLoadingState(LoadingDataState.Loaded)
-                    findRegionView.moveUiToNewContentType(ShowingContentType.LIST_OF_CENTERS)
-                    findRegionView.showDonorCenters(listOfCenters)
-                }
-                finishLoadingData()
-            }
-        }
+//        donorUaApi.loadCitiesForRegion(region) { listOfCenters ->
+//            if (currentLoadingDataType == LoadingDataType.LIST_OF_CENTERS) {
+//                if (listOfCenters.isEmpty()) {
+//                    findRegionView.moveUiToNewLoadingState(LoadingDataState.Failed)
+//                } else {
+//                    findRegionView.moveUiToNewLoadingState(LoadingDataState.Loaded)
+//                    findRegionView.moveUiToNewContentType(ShowingContentType.LIST_OF_CENTERS)
+//                    findRegionView.showDonorCenters(listOfCenters)
+//                }
+//                finishLoadingData()
+//            }
+//        }
     }
 
     override fun loadDonorCenter(donorCenterPreview: DonorCenterPreview) {
         currentLoadingDataType = LoadingDataType.SINGLE_CENTER
         findRegionView.moveUiToNewLoadingState(LoadingDataState.Loading)
-        donorUaApi.loadListOfRegions { listRegion ->
-            if (currentLoadingDataType == LoadingDataType.LIST_OF_REGIONS) {
-                if (listRegion.isEmpty()) {
-                    findRegionView.moveUiToNewLoadingState(LoadingDataState.Failed)
-                } else {
-                    findRegionView.moveUiToNewLoadingState(LoadingDataState.Loaded)
-                    findRegionView.showRegions(listRegion)
-                }
-            }
-        }
+//        donorUaApi.loadListOfRegions { listRegion ->
+//            if (currentLoadingDataType == LoadingDataType.LIST_OF_REGIONS) {
+//                if (listRegion.isEmpty()) {
+//                    findRegionView.moveUiToNewLoadingState(LoadingDataState.Failed)
+//                } else {
+//                    findRegionView.moveUiToNewLoadingState(LoadingDataState.Loaded)
+//                    findRegionView.showRegions(listRegion)
+//                }
+//            }
+//        }
     }
 }

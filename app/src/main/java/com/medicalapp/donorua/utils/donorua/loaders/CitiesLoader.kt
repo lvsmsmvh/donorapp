@@ -3,7 +3,7 @@ package com.medicalapp.donorua.utils.donorua.loaders
 import com.medicalapp.donorua.utils.Api
 import com.medicalapp.donorua.utils.donorua.jsoup.JsoupFeatures
 import com.medicalapp.donorua.utils.donorua.model.City
-import com.medicalapp.donorua.utils.donorua.model.DonorCenterPreview
+import com.medicalapp.donorua.utils.donorua.model.DonorCenter
 import com.medicalapp.donorua.utils.donorua.model.Region
 import org.jsoup.nodes.Document
 import java.lang.Exception
@@ -29,11 +29,11 @@ class CitiesLoader {
             val cityElement = listOfCitiesElements
                 .eq(i)
 
-            val title = cityElement
+            val cityTitle = cityElement
                 .select("h3")
                 .text()
 
-            val listOfCenters = mutableListOf<DonorCenterPreview>()
+            val listOfCenters = mutableListOf<DonorCenter>()
             val listOfCentersElements = cityElement
                 .select("p[class=text-muted]")
 
@@ -54,17 +54,17 @@ class CitiesLoader {
                     .attr("href")
 
                 listOfCenters.add(
-                    DonorCenterPreview(
-                        centerTitle,
-                        centerAddress,
-                        centerLink
+                    DonorCenter(
+                        cityName = cityTitle,
+                        regionName = region.name,
+                        urlInDonorUa = centerLink
                     )
                 )
             }
 
             listOfCities.add(
                 City(
-                    title,
+                    cityTitle,
                     listOfCenters
                 )
             )
