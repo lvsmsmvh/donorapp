@@ -5,7 +5,7 @@ import com.medicalapp.donorua.utils.Api
 import com.medicalapp.donorua.utils.LogTags
 import com.medicalapp.donorua.utils.donorua.DonorUaApi
 import com.medicalapp.donorua.utils.donorua.jsoup.JsoupFeatures
-import com.medicalapp.donorua.utils.donorua.model.DonorCenter
+import com.medicalapp.donorua.model.center.DonorCenter
 import org.jsoup.nodes.Element
 
 class DonorCenterLoader {

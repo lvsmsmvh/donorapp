@@ -2,9 +2,9 @@ package com.medicalapp.donorua.utils.donorua.loaders
 
 import com.medicalapp.donorua.utils.Api
 import com.medicalapp.donorua.utils.donorua.jsoup.JsoupFeatures
-import com.medicalapp.donorua.utils.donorua.model.City
-import com.medicalapp.donorua.utils.donorua.model.DonorCenter
-import com.medicalapp.donorua.utils.donorua.model.Region
+import com.medicalapp.donorua.model.center.City
+import com.medicalapp.donorua.model.center.DonorCenter
+import com.medicalapp.donorua.model.center.Region
 import org.jsoup.nodes.Document
 import java.lang.Exception
 
@@ -17,7 +17,8 @@ class CitiesLoader {
         val doc: Document
 
         try {
-            doc = JsoupFeatures.getDocument(Api.URL_DOMAIN + region.link)
+            doc = JsoupFeatures.getDocument(Api.URL_DOMAIN)
+//            doc = JsoupFeatures.getDocument(Api.URL_DOMAIN + region.link)
         } catch (e: Exception) {
             return emptyList()
         }
@@ -53,13 +54,13 @@ class CitiesLoader {
                     .select("a")
                     .attr("href")
 
-                listOfCenters.add(
-                    DonorCenter(
-                        cityName = cityTitle,
-                        regionName = region.name,
-                        urlInDonorUa = centerLink
-                    )
-                )
+//                listOfCenters.add(
+////                    DonorCenter(
+////                        cityName = cityTitle,
+////                        regionName = region.name,
+////                        urlInDonorUa = centerLink
+////                    )
+//                )
             }
 
             listOfCities.add(

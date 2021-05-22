@@ -9,8 +9,8 @@ import com.medicalapp.donorua.model.findcenterstates.ShowingContentType
 import com.medicalapp.donorua.mvp.findregion.city.CityListAdapter
 import com.medicalapp.donorua.mvp.findregion.regions.RegionListAdapter
 import com.medicalapp.donorua.utils.donorua.DonorUaApi
-import com.medicalapp.donorua.utils.donorua.model.City
-import com.medicalapp.donorua.utils.donorua.model.Region
+import com.medicalapp.donorua.model.center.City
+import com.medicalapp.donorua.model.center.Region
 import com.medicalapp.donorua.utils.extensions.hide
 import com.medicalapp.donorua.utils.extensions.show
 import kotlinx.android.synthetic.main.activity_find_region.*

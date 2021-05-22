@@ -2,7 +2,7 @@ package com.medicalapp.donorua.utils.donorua.loaders
 
 import com.medicalapp.donorua.utils.Api
 import com.medicalapp.donorua.utils.donorua.jsoup.JsoupFeatures
-import com.medicalapp.donorua.utils.donorua.model.Region
+import com.medicalapp.donorua.model.center.Region
 import org.jsoup.nodes.Document
 import java.lang.Exception
 
@@ -35,7 +35,8 @@ class RegionsLoader {
                 .attr("href")
 
             listOfRegions.add(
-                Region(title, link)
+                Region(title, emptyList())
+//                Region(title, link)
             )
         }
         return listOfRegions

@@ -3,9 +3,9 @@ package com.medicalapp.donorua.mvp.findregion
 import com.medicalapp.donorua.model.findcenterstates.LoadingDataState
 import com.medicalapp.donorua.model.findcenterstates.ShowingContentType
 import com.medicalapp.donorua.utils.donorua.DonorUaApi
-import com.medicalapp.donorua.utils.donorua.model.City
+import com.medicalapp.donorua.model.center.City
 import com.medicalapp.donorua.utils.donorua.model.DonorCenterPreview
-import com.medicalapp.donorua.utils.donorua.model.Region
+import com.medicalapp.donorua.model.center.Region
 
 interface IFindRegionContract {
     interface IFindRegionPresenter {

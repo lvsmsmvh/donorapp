@@ -6,7 +6,7 @@ import com.medicalapp.donorua.model.user.User
 import com.medicalapp.donorua.utils.SharedPrefsConst.SHARED_PREFS_DONOR_CENTER
 import com.medicalapp.donorua.utils.SharedPrefsConst.SHARED_PREFS_NAME
 import com.medicalapp.donorua.utils.SharedPrefsConst.SHARED_PREFS_USER_DATA
-import com.medicalapp.donorua.utils.donorua.model.DonorCenter
+import com.medicalapp.donorua.model.center.DonorCenter
 
 
 class SharedPrefsHelper(context: Context) {

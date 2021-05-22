@@ -10,10 +10,10 @@ import com.medicalapp.donorua.utils.LogTags
 import com.medicalapp.donorua.utils.donorua.loaders.CitiesLoader
 import com.medicalapp.donorua.utils.donorua.loaders.DonorCenterLoader
 import com.medicalapp.donorua.utils.donorua.loaders.RegionsLoader
-import com.medicalapp.donorua.utils.donorua.model.City
-import com.medicalapp.donorua.utils.donorua.model.DonorCenter
+import com.medicalapp.donorua.model.center.City
+import com.medicalapp.donorua.model.center.DonorCenter
 import com.medicalapp.donorua.utils.donorua.model.DonorCenterPreview
-import com.medicalapp.donorua.utils.donorua.model.Region
+import com.medicalapp.donorua.model.center.Region
 
 class DonorUaApi(private val activity: Activity) {
 

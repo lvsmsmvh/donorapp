@@ -1,4 +1,4 @@
-package com.medicalapp.donorua.utils.donorua.model
+package com.medicalapp.donorua.model.center
 
 data class City(
     val name: String,

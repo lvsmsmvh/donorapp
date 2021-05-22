@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.medicalapp.donorua.R
-import com.medicalapp.donorua.utils.donorua.model.City
+import com.medicalapp.donorua.model.center.City
 import com.medicalapp.donorua.utils.donorua.model.DonorCenterPreview
 
 

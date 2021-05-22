@@ -1,4 +1,4 @@
-package com.medicalapp.donorua.utils.donorua.model
+package com.medicalapp.donorua.model.center
 
 data class DonorCenter(
     val id: Int? = null,

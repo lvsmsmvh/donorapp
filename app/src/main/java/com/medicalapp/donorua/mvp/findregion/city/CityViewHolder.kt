@@ -4,7 +4,7 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.medicalapp.donorua.mvp.findregion.centers.DonorCenterListAdapter
-import com.medicalapp.donorua.utils.donorua.model.City
+import com.medicalapp.donorua.model.center.City
 import com.medicalapp.donorua.utils.donorua.model.DonorCenterPreview
 import kotlinx.android.synthetic.main.city_item.view.*
 
