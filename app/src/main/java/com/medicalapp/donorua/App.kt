@@ -1,7 +1,7 @@
 package com.medicalapp.donorua
 
 import android.app.Application
-import com.medicalapp.donorua.utils.centers.DonorCentersStorage
+import com.medicalapp.donorua.utils.helper.DonorCentersStorage
 import com.medicalapp.donorua.utils.helper.SharedPrefsHelper
 
 

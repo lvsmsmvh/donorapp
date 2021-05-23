@@ -21,11 +21,11 @@
             android:value="ocr" />
 
         <activity
-            android:name=".mvp.main.MainActivity"
+            android:name=".ui.main.MainActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".mvp.splash.SplashActivity"
+            android:name=".ui.splash.SplashActivity"
             android:launchMode="singleTask"
             android:theme="@style/SplashTheme"
             android:screenOrientation="portrait">
@@ -35,29 +35,25 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".mvp.registration.FirstOpenActivity"
+            android:name=".ui.registration.FirstOpenActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
-        <activity android:name=".mvp.infodetails.InfoDetailsActivity"
+        <activity android:name=".ui.infodetails.InfoDetailsActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
-        <activity android:name=".mvp.findregion.FindRegionActivity"
+        <activity android:name=".ui.capturereceipt.CaptureReceiptActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".mvp.capturereceipt.CaptureReceiptActivity"
+        <activity android:name=".ui.outputreceipt.OutputReceiptActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".mvp.outputreceipt.OutputReceiptActivity"
+        <activity android:name=".ui.info.InfoActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".mvp.info.InfoActivity"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".mvp.search.SearchActivity"
+        <activity android:name=".ui.search.SearchActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
         </activity>
