@@ -1,23 +1,22 @@
-package com.medicalapp.donorua.mvp.findregion.city
+package com.medicalapp.donorua.mvp.search.city
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.medicalapp.donorua.R
 import com.medicalapp.donorua.model.center.City
-import com.medicalapp.donorua.utils.donorua.model.DonorCenterPreview
-
 
 class CityListAdapter: RecyclerView.Adapter<CityViewHolder>() {
 
     private lateinit var listOfCities: List<City>
-    private lateinit var onCLickedOnDonorCenterListener: (DonorCenterPreview) -> Unit
+    private lateinit var onCLickedListener: (City) -> Unit
 
-    fun set(list: List<City>, onCLickedListener: (DonorCenterPreview) -> Unit) {
-        this.listOfCities = list
-        this.onCLickedOnDonorCenterListener = onCLickedListener
+    fun set(listOfCities: List<City>, onCLickedListener: (onClickedCity: City) -> Unit) {
+        this.listOfCities = listOfCities
+        this.onCLickedListener = onCLickedListener
         notifyDataSetChanged()
     }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CityViewHolder {
         return CityViewHolder(
             LayoutInflater.from(parent.context)
@@ -28,6 +27,6 @@ class CityListAdapter: RecyclerView.Adapter<CityViewHolder>() {
     override fun getItemCount() = listOfCities.size
 
     override fun onBindViewHolder(holder: CityViewHolder, position: Int) {
-        holder.bind(listOfCities[position], onCLickedOnDonorCenterListener)
+        holder.bind(listOfCities[position], onCLickedListener)
     }
 }

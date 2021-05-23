@@ -49,3 +49,5 @@ fun Region.numberOfCenters(): Int {
     }
     return numberOfCenters
 }
+
+fun City.numberOfCenters() = centers.size.toString()

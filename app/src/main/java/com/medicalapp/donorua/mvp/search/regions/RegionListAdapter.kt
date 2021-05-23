@@ -20,7 +20,7 @@ class RegionListAdapter: RecyclerView.Adapter<RegionViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RegionViewHolder {
         return RegionViewHolder(
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.region_item, parent, false)
+                .inflate(R.layout.item_region, parent, false)
         )
     }
 

@@ -5,7 +5,8 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.medicalapp.donorua.R
-import com.medicalapp.donorua.mvp.search.regions.RegionListActivity
+import com.medicalapp.donorua.mvp.search.SearchActivity
+import com.medicalapp.donorua.mvp.search.regions.RegionListFragment
 import com.medicalapp.donorua.utils.extensions.centersStorage
 import com.medicalapp.donorua.utils.extensions.simpleNavigate
 import kotlinx.android.synthetic.main.fragment_centers.*
@@ -39,5 +40,5 @@ class CentersFragment : Fragment(R.layout.fragment_centers),
     }
 
     override fun openFindCentersActivity() =
-        requireActivity().simpleNavigate(RegionListActivity::class.java)
+        requireActivity().simpleNavigate(SearchActivity::class.java)
 }

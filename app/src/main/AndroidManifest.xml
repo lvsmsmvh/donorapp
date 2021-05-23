@@ -57,7 +57,7 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".mvp.search.regions.RegionListActivity"
+        <activity android:name=".mvp.search.SearchActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
         </activity>
