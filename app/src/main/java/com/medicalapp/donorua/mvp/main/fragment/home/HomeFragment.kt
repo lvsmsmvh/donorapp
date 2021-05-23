@@ -1,6 +1,5 @@
 package com.medicalapp.donorua.mvp.main.fragment.home
 
-import android.graphics.Region
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -45,11 +44,6 @@ class HomeFragment : Fragment(R.layout.fragment_home),
                 val regions = list.toListOfRegions()
 
                 log("home: converting finished")
-
-//                logRegion(regions[0])
-//                logRegion(regions[1])
-//                logRegion(regions[2])
-//                logRegion(regions[3])
             }
         }
         fragment_home_button_info_for_donor.setOnClickListener {
@@ -58,7 +52,6 @@ class HomeFragment : Fragment(R.layout.fragment_home),
         fragment_home_button_new_check.setOnClickListener {
             presenter.onSaveACheckClick()
         }
-
     }
 
     override fun navigateToFindCityActivity() =

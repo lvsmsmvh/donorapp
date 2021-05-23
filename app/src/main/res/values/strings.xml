@@ -13,6 +13,8 @@
     <string name="loading_failed">Не вдалося завантажити :(</string>
     <string name="find_donor_center">Знайти донорський центр</string>
     <string name="home_page">Головна</string>
+    <string name="centers">Центри</string>
+    <string name="checks">Мої здачі</string>
     <string name="profile">Профіль</string>
     <string name="take_photo_of_a_receipt">Сфотографувати чек</string>
     <string name="choose_a_photo_from_gallery">Обрати фото з галереї</string>

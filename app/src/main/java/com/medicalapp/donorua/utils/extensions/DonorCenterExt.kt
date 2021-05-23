@@ -41,3 +41,11 @@ fun List<DonorCenter>.toListOfRegions(): List<Region>  {
         )
     }
 }
+
+fun Region.numberOfCenters(): Int {
+    var numberOfCenters = 0
+    cities.forEach { city ->
+        numberOfCenters += city.centers.size
+    }
+    return numberOfCenters
+}

@@ -13,6 +13,7 @@ class DonorCentersStorage(val app: App) {
     fun restoreCenters() {
         // Centers already in variable
         if (listOfDonorCenter != null) {
+            logStorage("donor centers already in variable")
             return
         }
 

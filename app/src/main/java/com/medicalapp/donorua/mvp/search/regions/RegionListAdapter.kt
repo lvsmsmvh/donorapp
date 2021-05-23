@@ -1,4 +1,4 @@
-package com.medicalapp.donorua.mvp.findregion.regions
+package com.medicalapp.donorua.mvp.search.regions
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

@@ -6,11 +6,13 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.medicalapp.donorua.R
+import com.medicalapp.donorua.mvp.main.fragment.centers.CentersFragment
 import com.medicalapp.donorua.mvp.main.fragment.home.HomeFragment
 import com.medicalapp.donorua.mvp.main.fragment.profile.ProfileFragment
 import com.medicalapp.donorua.mvp.registration.FirstOpenActivity
 import com.medicalapp.donorua.utils.extensions.*
 import kotlinx.android.synthetic.main.activity_main.*
+import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,7 +30,10 @@ class MainActivity : AppCompatActivity() {
         bottom_navigation.setOnNavigationItemSelectedListener {
             simpleNavigate(when (it.itemId) {
                 R.id.nav_home -> HomeFragment()
-                else -> ProfileFragment()
+                R.id.nav_centers -> CentersFragment()
+                R.id.nav_checks -> HomeFragment() // TODO CheckFragment()
+                R.id.nav_profile -> ProfileFragment()
+                else -> HomeFragment()
             })
             return@setOnNavigationItemSelectedListener true
         }
