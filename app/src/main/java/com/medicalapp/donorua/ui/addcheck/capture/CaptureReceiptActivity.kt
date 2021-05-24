@@ -1,4 +1,4 @@
-package com.medicalapp.donorua.ui.capturereceipt
+package com.medicalapp.donorua.ui.addcheck.capture
 
 import android.content.Intent
 import android.net.Uri
@@ -6,7 +6,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LifecycleOwner
 import com.medicalapp.donorua.R
-import com.medicalapp.donorua.ui.outputreceipt.OutputReceiptActivity
+import com.medicalapp.donorua.ui.addcheck.analyzer.ImageAnalyzerActivity
 import com.medicalapp.donorua.utils.extensions.makeClickable
 import com.medicalapp.donorua.utils.extensions.makeUnclickable
 import kotlinx.android.synthetic.main.activity_capture_receipt.*
@@ -64,9 +64,10 @@ class CaptureReceiptActivity: AppCompatActivity(),
     override fun getActivityInstance() = this
 
     override fun openOutputReceiptActivity(uri: Uri) {
-        val intent = Intent(this, OutputReceiptActivity::class.java)
+        val intent = Intent(this, ImageAnalyzerActivity::class.java)
         intent.data = uri
         startActivity(intent)
+        finish()
     }
 
     override fun onDestroy() {

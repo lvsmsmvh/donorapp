@@ -41,11 +41,11 @@
         <activity android:name=".ui.infodetails.InfoDetailsActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
-        <activity android:name=".ui.capturereceipt.CaptureReceiptActivity"
+        <activity android:name=".ui.addcheck.capture.CaptureReceiptActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".ui.outputreceipt.OutputReceiptActivity"
+        <activity android:name=".ui.addcheck.analyzer.ImageAnalyzerActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
         </activity>
@@ -58,6 +58,9 @@
             android:screenOrientation="portrait">
         </activity>
         <activity android:name=".ui.center.CenterActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ui.addcheck.addinfo.AddCheckActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
     </application>

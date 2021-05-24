@@ -1,4 +1,4 @@
-package com.medicalapp.donorua.ui.capturereceipt
+package com.medicalapp.donorua.ui.addcheck.capture
 
 import android.Manifest
 import android.content.Intent
@@ -48,7 +48,8 @@ class CaptureReceiptPresenter(
             startCamera()
         } else {
             ActivityCompat.requestPermissions(
-                activity, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS)
+                activity, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS
+            )
         }
 
         outputDirectory = getOutputDirectory()
@@ -74,12 +75,6 @@ class CaptureReceiptPresenter(
             MediaStore.Images.Media.INTERNAL_CONTENT_URI
         )
         intent.type = "image/*"
-//        intent.putExtra("crop", "true")
-//        intent.putExtra("scale", true)
-//        intent.putExtra("outputX", 256)
-//        intent.putExtra("outputY", 256)
-//        intent.putExtra("aspectX", 1)
-//        intent.putExtra("aspectY", 1)
         intent.putExtra("return-data", true)
         activity.startActivityForResult(intent, pickImageCode)
     }
@@ -129,7 +124,8 @@ class CaptureReceiptPresenter(
         // Create time-stamped output file to hold the image
         val photoFile = File(
             outputDirectory,
-            SimpleDateFormat(FILENAME_FORMAT, Locale.US
+            SimpleDateFormat(
+                FILENAME_FORMAT, Locale.US
             ).format(System.currentTimeMillis()) + ".jpg")
 
         // Create output options object which contains file + metadata

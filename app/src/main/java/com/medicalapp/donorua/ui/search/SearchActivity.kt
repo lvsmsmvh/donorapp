@@ -27,14 +27,19 @@ class SearchActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
 
-        when (intent.action) {
+        action = intent.action!!
+
+        firstNavigate()
+    }
+
+    private fun firstNavigate() {
+        when (action) {
             ACTION_SHOW_FAVORITE_CENTERS ->
                 navigateToCentersFragment(centersStorage().favoriteCenters.getList())
             else ->
                 navigateToRegionsFragment(centersStorage().listOfDonorCenter!!.toListOfRegions())
         }
     }
-
 
     private fun navigateToRegionsFragment(list: List<Region>) {
         simpleNavigate(fragment = RegionListFragment(list) { regionClicked ->
@@ -50,7 +55,10 @@ class SearchActivity: AppCompatActivity() {
 
     private fun navigateToCentersFragment(list: List<DonorCenter>) {
         simpleNavigate(fragment = CenterListFragment(list) { centerClicked ->
-            navigateToCenterActivity(centerClicked)
+            when (action) {
+                ACTION_GET_CENTER -> returnCenterIdBack(centerClicked.id!!)
+                else -> navigateToCenterActivity(centerClicked)
+            }
         })
     }
 
@@ -71,10 +79,21 @@ class SearchActivity: AppCompatActivity() {
         } else super.onBackPressed()
     }
 
+    private fun returnCenterIdBack(id: Int) {
+        setResult(REQUEST_CODE_GET_CENTER,
+            Intent().putExtra(KEY_CENTER_ID, id))
+        finish()
+    }
+
 
     companion object {
         const val ACTION_SHOW_ALL_CENTERS = "action_show_all_centers"
         const val ACTION_SHOW_FAVORITE_CENTERS = "action_show_favorite_centers"
+        const val ACTION_GET_CENTER = "action_get_center"
+
+        const val KEY_CENTER_ID = "center_id"
+
+        const val REQUEST_CODE_GET_CENTER = 14313
     }
 
 

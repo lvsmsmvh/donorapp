@@ -139,7 +139,7 @@ class CenterActivity: AppCompatActivity(),
 
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        centersStorage().favoriteCenters.changeExisting(donorCenter)
+        centersStorage().favoriteCenters.changeExistingOfACenter(donorCenter)
         updateMenuStarIcon(item)
         return super.onOptionsItemSelected(item)
     }

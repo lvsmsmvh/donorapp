@@ -7,6 +7,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import com.medicalapp.donorua.R
 import com.medicalapp.donorua.ui.main.fragment.centers.CentersFragment
+import com.medicalapp.donorua.ui.main.fragment.checks.ChecksFragment
 import com.medicalapp.donorua.ui.main.fragment.home.HomeFragment
 import com.medicalapp.donorua.ui.main.fragment.profile.ProfileFragment
 import com.medicalapp.donorua.ui.registration.FirstOpenActivity
@@ -14,7 +15,6 @@ import com.medicalapp.donorua.utils.extensions.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
             simpleNavigate(when (it.itemId) {
                 R.id.nav_home -> HomeFragment()
                 R.id.nav_centers -> CentersFragment()
-                R.id.nav_checks -> HomeFragment() // TODO CheckFragment()
+                R.id.nav_checks -> ChecksFragment()
                 R.id.nav_profile -> ProfileFragment()
                 else -> HomeFragment()
             })

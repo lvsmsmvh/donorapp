@@ -11,6 +11,10 @@ class DonorCentersStorage(val app: App) {
     val favoriteCenters = FavoriteCenters(app)
 
     var listOfDonorCenter: List<DonorCenter>? = null
+    get() {
+        field?.let { return it }
+        return app.sharedPrefs.getListOfCenters()
+    }
 
     fun restoreCenters() {
         // Centers already in variable

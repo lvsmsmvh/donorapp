@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/activity_add_check_menu"
+        android:actionLayout="@layout/layout_for_menu_ok"
+        android:orderInCategory="100"
+        app:showAsAction="always"
+        android:title="@string/OK"/>
+</menu>

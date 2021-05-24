@@ -10,7 +10,7 @@ fun Uri.toBitmap(contentResolver: ContentResolver): Bitmap {
     return MediaStore.Images.Media.getBitmap(contentResolver, this)
 }
 
-fun Uri.toImageFile(contentResolver: ContentResolver): File? {
+fun Uri.toFile(contentResolver: ContentResolver): File? {
     val filePathColumn = arrayOf(MediaStore.Images.Media.DATA)
     val cursor = contentResolver
         .query(this, filePathColumn, null, null, null)

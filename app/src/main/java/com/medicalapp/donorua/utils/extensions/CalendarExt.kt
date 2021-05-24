@@ -2,6 +2,14 @@ package com.medicalapp.donorua.utils.extensions
 
 import java.util.*
 
+fun Calendar.getDateInStringFormat() =
+            get(Calendar.DAY_OF_MONTH).toString() + "/" +
+            get(Calendar.MONTH).toString() + "/" +
+            get(Calendar.YEAR)
+
+fun Calendar.getTimeInStringFormat() =
+    get(Calendar.HOUR_OF_DAY).toString() + ":" + get(Calendar.MINUTE).toString()
+
 fun Calendar.defaultDate(): Calendar {
     set(Calendar.YEAR, get(Calendar.YEAR) - 20)
     return this

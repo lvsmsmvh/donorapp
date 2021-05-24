@@ -18,3 +18,5 @@ fun Activity.simpleNavigateAndFinishAfter(name: Class<out AppCompatActivity>) {
 }
 
 fun Context.centersStorage() = (applicationContext as App).donorCenterStorage
+
+fun Context.checksStorage() = (applicationContext as App).checksStorage
