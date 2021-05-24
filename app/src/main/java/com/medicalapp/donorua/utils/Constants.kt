@@ -4,6 +4,7 @@ object SharedPrefsConst {
     const val SHARED_PREFS_NAME = "shared_prefs"
     const val SHARED_PREFS_USER_DATA = "user_data"
     const val SHARED_PREFS_DONOR_CENTER = "donor_centers"
+    const val SHARED_PREFS_FAV_CENTERS = "donor_fav_centers"
 }
 
 object LogTags {

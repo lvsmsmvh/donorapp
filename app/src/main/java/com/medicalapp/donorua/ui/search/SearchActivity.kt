@@ -21,17 +21,18 @@ import kotlinx.android.synthetic.main.activity_search.*
 
 class SearchActivity: AppCompatActivity() {
 
-    private lateinit var fragmentContainer: FrameLayout
-    private lateinit var regions: List<Region>
+    private lateinit var action: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
 
-        fragmentContainer = activity_search_fragment_container
-        regions = centersStorage().listOfDonorCenter!!.toListOfRegions()
-
-        navigateToRegionsFragment(regions)
+        when (intent.action) {
+            ACTION_SHOW_FAVORITE_CENTERS ->
+                navigateToCentersFragment(centersStorage().favoriteCenters.getList())
+            else ->
+                navigateToRegionsFragment(centersStorage().listOfDonorCenter!!.toListOfRegions())
+        }
     }
 
 
@@ -49,7 +50,6 @@ class SearchActivity: AppCompatActivity() {
 
     private fun navigateToCentersFragment(list: List<DonorCenter>) {
         simpleNavigate(fragment = CenterListFragment(list) { centerClicked ->
-            Toast.makeText(this, "Center : " + centerClicked.name, Toast.LENGTH_SHORT).show()
             navigateToCenterActivity(centerClicked)
         })
     }
@@ -71,6 +71,11 @@ class SearchActivity: AppCompatActivity() {
         } else super.onBackPressed()
     }
 
+
+    companion object {
+        const val ACTION_SHOW_ALL_CENTERS = "action_show_all_centers"
+        const val ACTION_SHOW_FAVORITE_CENTERS = "action_show_favorite_centers"
+    }
 
 
     private fun log(string: String) {

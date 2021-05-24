@@ -8,6 +8,8 @@ import com.medicalapp.donorua.model.center.DonorCenter
 
 class DonorCentersStorage(val app: App) {
 
+    val favoriteCenters = FavoriteCenters(app)
+
     var listOfDonorCenter: List<DonorCenter>? = null
 
     fun restoreCenters() {
@@ -45,6 +47,7 @@ class DonorCentersStorage(val app: App) {
                 logStorage("database: saved to pref")
             }
     }
+
 
     fun getCenterById(id: Int) = listOfDonorCenter!!.first { it.id == id }
 

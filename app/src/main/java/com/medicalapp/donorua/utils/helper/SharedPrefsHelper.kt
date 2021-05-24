@@ -7,6 +7,7 @@ import com.medicalapp.donorua.utils.SharedPrefsConst.SHARED_PREFS_DONOR_CENTER
 import com.medicalapp.donorua.utils.SharedPrefsConst.SHARED_PREFS_NAME
 import com.medicalapp.donorua.utils.SharedPrefsConst.SHARED_PREFS_USER_DATA
 import com.medicalapp.donorua.model.center.DonorCenter
+import com.medicalapp.donorua.utils.SharedPrefsConst.SHARED_PREFS_FAV_CENTERS
 
 
 class SharedPrefsHelper(context: Context) {
@@ -17,6 +18,24 @@ class SharedPrefsHelper(context: Context) {
         SHARED_PREFS_NAME,
         Context.MODE_PRIVATE
     )
+
+
+    // fav centers
+
+    fun saveListOfFavoriteCenters(list: List<DonorCenter>) {
+        val str = parseListOfCentersToStr(list)
+        sharedPreferences.edit().putString(SHARED_PREFS_FAV_CENTERS, str).apply()
+    }
+
+    fun getListOfFavoriteCenters(): List<DonorCenter> {
+        sharedPreferences.getString(SHARED_PREFS_FAV_CENTERS, null)?.let { str ->
+            return parseListOfCentersFromStr(str)
+        }
+        return emptyList()
+    }
+
+
+    // all list of centers
 
     fun saveListOfCenters(list: List<DonorCenter>) {
         val str = parseListOfCentersToStr(list)
@@ -29,6 +48,9 @@ class SharedPrefsHelper(context: Context) {
         }
         return null
     }
+
+
+    // user
 
     fun saveUser(user: User) {
         sharedPreferences.edit().putString(SHARED_PREFS_USER_DATA, parseUserToStr(user)).apply()

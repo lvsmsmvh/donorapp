@@ -7,6 +7,14 @@
     android:layout_height="match_parent"
     tools:context=".ui.main.MainActivity">
 
+
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom_navigation"/>
+
     <com.cesar.materialcomponents.Banner
         android:id="@+id/banner"
         android:layout_width="match_parent"
@@ -18,12 +26,6 @@
         app:contentText="@string/reg_please"
         app:leftButtonText="@string/later"
         app:rightButtonText="@string/OK"/>
-
-    <FrameLayout
-        android:id="@+id/fragment_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/bottom_navigation"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"

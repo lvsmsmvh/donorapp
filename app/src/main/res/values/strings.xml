@@ -16,6 +16,7 @@
     <string name="centers">Центри</string>
     <string name="checks">Мої здачі</string>
     <string name="profile">Профіль</string>
+    <string name="to_bookmarks">В закладки</string>
     <string name="take_photo_of_a_receipt">Сфотографувати чек</string>
     <string name="choose_a_photo_from_gallery">Обрати фото з галереї</string>
     <string name="make_a_photo_with_camera">Зробити фото</string>
@@ -318,4 +319,5 @@
     <string name="fill_your_gender">Оберіть, будь ласка, Вашу стать!</string>
     <string name="fill_your_blood_group">Оберіть, будь ласка, Вашу групу крові!</string>
     <string name="take_photo_or_pick_from_gallery">Зробіть фото чеку або оберіть з галереї</string>
+    <string name="my_centers">Мої центри</string>
 </resources>

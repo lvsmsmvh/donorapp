@@ -1,5 +1,6 @@
 package com.medicalapp.donorua.ui.main.fragment.centers
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -31,6 +32,14 @@ class CentersFragment : Fragment(R.layout.fragment_centers),
     private fun initControl() {
         fragment_centers_btn_find_centers.setOnClickListener {
             presenter.onFindCentersClick()
+        }
+
+        fragment_centers_btn_my_centers.setOnClickListener {
+            requireActivity().startActivity(
+                Intent(requireContext(), SearchActivity::class.java).apply {
+                    action = SearchActivity.ACTION_SHOW_FAVORITE_CENTERS
+                }
+            )
         }
     }
 

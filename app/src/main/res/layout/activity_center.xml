@@ -1,87 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#eeeeee"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#f6f6f6"
-    android:orientation="vertical">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="20dp"
-        android:textSize="16sp"
-        android:textColor="@color/dark_dark_grey"
-        android:gravity="center"
-        android:text="Назва центру"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="12sp"
-        android:textColor="@color/dark_grey"
-        android:layout_marginHorizontal="20dp"
-        android:text="Адреса"
-        android:gravity="center_vertical"
-        android:drawablePadding="5dp"
-        app:drawableTint="@color/dark_grey"
-        app:drawableStartCompat="@drawable/ic_location" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/dark_dark_grey"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginVertical="20dp"/>
-
-
+    android:layout_height="match_parent">
     <LinearLayout
-        android:id="@+id/activity_center_info_pieces_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical" />
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/activity_center_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="50dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="10dp"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/dark_dark_grey"
+            android:gravity="center"
+            android:drawableLeft="@drawable/ic_home"
+            android:drawablePadding="20dp"
+            android:text="Назва центру"
+            app:drawableTint="@color/dark_dark_grey" />
 
 
-    <LinearLayout
-        android:id="@+id/activity_center_social_networks_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingVertical="5dp"
-        android:paddingHorizontal="30dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal" >
 
-        <ImageView
-            android:id="@+id/activity_center_icon_instagram"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/ic_instagram"
-            android:layout_marginHorizontal="5dp"
-            app:tint="#f16" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/dark_grey"
+            android:layout_marginHorizontal="50dp"
+            android:layout_marginVertical="30dp"/>
 
-        <ImageView
-            android:id="@+id/activity_center_icon_facebook"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/ic_facebook"
-            android:layout_marginHorizontal="5dp"
-            app:tint="#44f" />
 
-    </LinearLayout>
+        <LinearLayout
+            android:id="@+id/activity_center_info_pieces_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="50dp"
+            android:orientation="vertical" >
+            <TextView
+                android:id="@+id/activity_center_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@drawable/selector_for_tv_link"
+                android:text="Адреса"
+                android:gravity="center_vertical"
+                android:drawablePadding="15dp"
+                app:drawableTint="@color/dark_grey"
+                android:layout_marginBottom="10dp"
+                app:drawableStartCompat="@drawable/ic_location" />
+            <TextView
+                android:id="@+id/activity_center_mail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@drawable/selector_for_tv_link"
+                android:text="E-mail"
+                android:gravity="center_vertical"
+                android:drawablePadding="15dp"
+                app:drawableTint="@color/dark_grey"
+                android:layout_marginBottom="10dp"
+                app:drawableStartCompat="@drawable/ic_mail" />
+            <TextView
+                android:id="@+id/activity_center_link"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@drawable/selector_for_tv_link"
+                android:text="Web site"
+                android:gravity="center_vertical"
+                android:drawablePadding="15dp"
+                app:drawableTint="@color/dark_grey"
+                android:layout_marginBottom="10dp"
+                app:drawableStartCompat="@drawable/ic_link" />
+            <TextView
+                android:id="@+id/activity_center_donorua_link"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@drawable/selector_for_tv_link"
+                android:text="Donor ua site"
+                android:gravity="center_vertical"
+                android:drawablePadding="15dp"
+                app:drawableTint="@color/dark_grey"
+                app:drawableStartCompat="@drawable/ic_flower" />
+        </LinearLayout>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="30dp">
+
+        <LinearLayout
+            android:id="@+id/activity_center_social_networks_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="15dp"
+            android:paddingHorizontal="50dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/activity_center_icon_instagram"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/ic_instagram"
+                app:tint="#f16" />
+
+            <ImageView
+                android:id="@+id/activity_center_icon_facebook"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_facebook"
+                app:tint="#44f" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/dark_grey"
+            android:layout_marginHorizontal="50dp"
+            android:layout_marginVertical="30dp"/>
+
         <TextView
             android:id="@+id/activity_center_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="50dp"
             android:text="@string/info_coffee_for_donor_details"
             android:textColor="@color/black"
             android:textSize="13sp"/>
-    </ScrollView>
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>
