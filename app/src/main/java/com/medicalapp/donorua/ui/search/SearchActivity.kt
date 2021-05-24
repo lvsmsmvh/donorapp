@@ -1,5 +1,6 @@
 package com.medicalapp.donorua.ui.search
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.FrameLayout
@@ -10,6 +11,7 @@ import com.medicalapp.donorua.R
 import com.medicalapp.donorua.model.center.City
 import com.medicalapp.donorua.model.center.DonorCenter
 import com.medicalapp.donorua.model.center.Region
+import com.medicalapp.donorua.ui.center.CenterActivity
 import com.medicalapp.donorua.ui.search.centers.CenterListFragment
 import com.medicalapp.donorua.ui.search.city.CityListFragment
 import com.medicalapp.donorua.ui.search.regions.RegionListFragment
@@ -48,6 +50,7 @@ class SearchActivity: AppCompatActivity() {
     private fun navigateToCentersFragment(list: List<DonorCenter>) {
         simpleNavigate(fragment = CenterListFragment(list) { centerClicked ->
             Toast.makeText(this, "Center : " + centerClicked.name, Toast.LENGTH_SHORT).show()
+            navigateToCenterActivity(centerClicked)
         })
     }
 
@@ -56,11 +59,18 @@ class SearchActivity: AppCompatActivity() {
             .addToBackStack(fragment.id.toString())
             .commit()
 
+    private fun navigateToCenterActivity(center: DonorCenter) {
+        startActivity(Intent(this, CenterActivity::class.java).apply {
+            putExtra(CenterActivity.KEY_CENTER_ID, center.id)
+        })
+    }
+
     override fun onBackPressed() {
         if (supportFragmentManager.backStackEntryCount == 1) {
             finish()
         } else super.onBackPressed()
     }
+
 
 
     private fun log(string: String) {

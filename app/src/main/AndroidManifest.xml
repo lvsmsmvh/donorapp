@@ -57,5 +57,8 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".ui.center.CenterActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"/>
     </application>
 </manifest>

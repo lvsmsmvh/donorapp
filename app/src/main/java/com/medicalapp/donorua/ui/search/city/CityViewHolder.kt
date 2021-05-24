@@ -16,7 +16,7 @@ class CityViewHolder(private val cityView: View) : RecyclerView.ViewHolder(cityV
 
             city_item_city_name.text = city.name
 
-            val amountOfCentersStr = "Кількість центрів: " + city.centers.size.toString() + "  "+ city.numberOfCenters()
+            val amountOfCentersStr = "Кількість центрів: " + city.numberOfCenters()
             city_item_number_of_centers.text = amountOfCentersStr
         }
     }

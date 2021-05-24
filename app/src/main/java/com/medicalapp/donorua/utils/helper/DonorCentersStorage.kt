@@ -45,6 +45,9 @@ class DonorCentersStorage(val app: App) {
                 logStorage("database: saved to pref")
             }
     }
+
+    fun getCenterById(id: Int) = listOfDonorCenter!!.first { it.id == id }
+
     companion object {
         fun logStorage(string: String) {
             Log.i("tag_storage", string + "")
