@@ -2,6 +2,9 @@ package com.medicalapp.donorua.ui.main.fragment.centers
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -38,16 +41,25 @@ class CentersFragment : Fragment(R.layout.fragment_centers),
                 }
             )
         }
-
-        fragment_centers_btn_my_centers.setOnClickListener {
-            requireActivity().startActivity(
-                Intent(requireContext(), SearchActivity::class.java).apply {
-                    action = SearchActivity.ACTION_SHOW_FAVORITE_CENTERS
-                }
-            )
-        }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_star_filled, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.menu.menu_star_filled -> {
+                requireActivity().startActivity(
+                    Intent(requireContext(), SearchActivity::class.java).apply {
+                        action = SearchActivity.ACTION_SHOW_FAVORITE_CENTERS
+                    }
+                )
+            }
+        }
+        return true
+    }
 
     override fun makeToast(text: String) {
         Toast.makeText(requireContext(), text + "", Toast.LENGTH_SHORT).show()

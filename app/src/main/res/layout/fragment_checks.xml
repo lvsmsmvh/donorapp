@@ -5,11 +5,26 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Тут поки ще немає чеків :("
+        android:padding="40dp"
+        android:textSize="40sp"
+        android:textColor="@color/red_light"
+        android:textStyle="bold"
+        android:gravity="center"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/fragment_checks_rv"
+        android:background="#f6f6f6"
+        android:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fragment_checks_button_set_notification"
         android:layout_width="wrap_content"
