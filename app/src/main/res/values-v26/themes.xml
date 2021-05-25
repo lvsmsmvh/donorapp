@@ -15,6 +15,7 @@
         <!-- Customize your theme here. -->
         <item name="android:windowActionBar">false</item>
         <item name="android:windowNoTitle">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
 
         <item name="android:autofilledHighlight">@android:color/transparent</item>
     </style>

@@ -12,7 +12,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="Тут поки ще немає чеків :("
+        android:text="Тут поки що немає чеків :("
         android:padding="40dp"
         android:textSize="40sp"
         android:textColor="@color/red_light"

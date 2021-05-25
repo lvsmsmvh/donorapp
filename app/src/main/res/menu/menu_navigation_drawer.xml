@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:id="@+id/group1"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/subtitle1"
+            android:title="Центри">
+            <menu>
+                <item
+                    android:id="@+id/drawer_menu_item_my_centers"
+                    android:icon="@drawable/ic_star_filled"
+                    android:title="@string/my_centers"/>
+                <item
+                    android:id="@+id/drawer_menu_item_find_center"
+                    android:icon="@drawable/ic_search"
+                    android:title="Пошук центрів"/>
+            </menu>
+        </item>
+    </group>
+    <group
+        android:id="@+id/group2"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/subtitle2"
+            android:title="Інформація">
+            <menu>
+                <item
+                    android:id="@+id/drawer_menu_item_info_for_donor"
+                    android:icon="@drawable/ic_information"
+                    android:title="@string/info_for_donor"/>
+            </menu>
+        </item>
+    </group>
+    <group
+        android:id="@+id/group3"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/subtitle3"
+            android:title="Інше">
+            <menu>
+                <item
+                    android:id="@+id/drawer_menu_item_notification"
+                    android:icon="@drawable/ic_bell"
+                    android:title="Запланувати кроводачу"/>
+            </menu>
+        </item>
+    </group>
+</menu>

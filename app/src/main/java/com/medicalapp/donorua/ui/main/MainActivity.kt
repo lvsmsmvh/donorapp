@@ -1,16 +1,20 @@
 package com.medicalapp.donorua.ui.main
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.medicalapp.donorua.R
+import com.medicalapp.donorua.ui.info.InfoActivity
 import com.medicalapp.donorua.ui.main.fragment.centers.CentersFragment
 import com.medicalapp.donorua.ui.main.fragment.checks.ChecksFragment
 import com.medicalapp.donorua.ui.main.fragment.home.HomeFragment
 import com.medicalapp.donorua.ui.main.fragment.profile.ProfileFragment
+import com.medicalapp.donorua.ui.notification.NotificationSetterActivity
 import com.medicalapp.donorua.ui.registration.FirstOpenActivity
+import com.medicalapp.donorua.ui.search.SearchActivity
 import com.medicalapp.donorua.utils.extensions.*
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -23,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         initBottomNavListener()
         setFirstOpenedPage()
         configureViewForNotRegistered()
+        initNavigationDrawer()
     }
 
     private fun initBottomNavListener() {
@@ -59,6 +64,35 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun initNavigationDrawer() {
+        activity_main_navigation_drawer.setNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.drawer_menu_item_find_center -> {
+                    goSearchActivityWithAction(SearchActivity.ACTION_SHOW_ALL_CENTERS)
+                }
+                R.id.drawer_menu_item_my_centers -> {
+                    goSearchActivityWithAction(SearchActivity.ACTION_SHOW_FAVORITE_CENTERS)
+                }
+                R.id.drawer_menu_item_info_for_donor -> {
+                    simpleNavigate(InfoActivity::class.java)
+                }
+                R.id.drawer_menu_item_notification -> {
+                    simpleNavigate(NotificationSetterActivity::class.java)
+                }
+                else -> {
+
+                }
+            }
+            return@setNavigationItemSelectedListener true
+        }
+    }
+
+    private fun goSearchActivityWithAction(action: String) {
+        val intent = Intent(this, SearchActivity::class.java)
+            .setAction(action)
+
+        startActivity(intent)
+    }
 
     private fun simpleNavigate(toFragment: Fragment) {
         supportFragmentManager.beginTransaction().replace(
