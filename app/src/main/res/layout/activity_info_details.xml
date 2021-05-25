@@ -30,12 +30,12 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="30dp">
+        android:layout_height="wrap_content">
         <TextView
             android:id="@+id/activity_info_details_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingHorizontal="20dp"
             android:text="@string/info_coffee_for_donor_details"
             android:textColor="@color/black"
             android:textSize="13sp"/>

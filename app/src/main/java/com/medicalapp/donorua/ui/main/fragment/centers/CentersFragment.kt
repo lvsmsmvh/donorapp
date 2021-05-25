@@ -34,7 +34,7 @@ class CentersFragment : Fragment(R.layout.fragment_centers),
     }
 
     private fun initControl() {
-        fragment_centers_btn_find_centers.setOnClickListener {
+        fragment_centers_fb_search.setOnClickListener {
             requireActivity().startActivity(
                 Intent(requireContext(), SearchActivity::class.java).apply {
                     action = SearchActivity.ACTION_SHOW_ALL_CENTERS

@@ -31,22 +31,22 @@ class FirstOpenPresenter(
 
     private fun validateIfCanGoNext(user: User): Boolean {
         if (user.name.isNullOrEmpty()) {
-            firstOpenView.makeToastWithText("Имя не должно быть пустым!")
+            firstOpenView.makeToastWithText("Ім'я не повинно бути пустим!")
             return false
         }
 
         if (user.surname.isNullOrEmpty()) {
-            firstOpenView.makeToastWithText("Фамилия не должна быть пустой!")
+            firstOpenView.makeToastWithText("Прізвище не повинно бути пустим!")
             return false
         }
 
         if (user.gender == null) {
-            firstOpenView.makeToastWithText("Пожалуйста, укажите Ваш пол!")
+            firstOpenView.makeToastWithText("Будь ласка, вкажіть Вашу стать!")
             return false
         }
 
         if (user.bloodGroup == null) {
-            firstOpenView.makeToastWithText("Пожалуйста, укажите Вашу группу крови!")
+            firstOpenView.makeToastWithText("Будь ласка, вкажіть Вашу групу крові!")
             return false
         }
         return true

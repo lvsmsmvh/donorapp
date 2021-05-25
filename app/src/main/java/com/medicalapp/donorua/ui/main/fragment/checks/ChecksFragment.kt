@@ -25,12 +25,7 @@ class ChecksFragment: Fragment(R.layout.fragment_checks) {
         super.onViewCreated(view, savedInstanceState)
 
         initControl()
-        initData()
-
-        if (listOfChecks.isEmpty())
-            fragment_checks_rv.hide()
-        else
-            initRecycler()
+        initRecycler()
     }
 
 
@@ -43,11 +38,15 @@ class ChecksFragment: Fragment(R.layout.fragment_checks) {
         }
     }
 
-    private fun initData() {
-        listOfChecks = requireContext().checksStorage().getList()
-    }
 
     private fun initRecycler() {
+        listOfChecks = requireContext().checksStorage().getList()
+
+        if (listOfChecks.isEmpty()) {
+            fragment_checks_rv.hide()
+            return
+        }
+
         val checkListAdapter = CheckListAdapter()
 
         checkListAdapter.set(
@@ -68,7 +67,6 @@ class ChecksFragment: Fragment(R.layout.fragment_checks) {
         val isListActual = requireContext().checksStorage().getList() == listOfChecks
 
         if (!isListActual) {
-            initData()
             initRecycler()
         }
     }

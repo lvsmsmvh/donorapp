@@ -1,8 +1,11 @@
 package com.medicalapp.donorua.ui.registration
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.medicalapp.donorua.R
 import com.medicalapp.donorua.ui.main.MainActivity
 import com.medicalapp.donorua.model.user.BloodGroup
@@ -25,14 +28,7 @@ class FirstOpenActivity: AppCompatActivity(), IFirstOpenContract.IFirstOpenView 
 
         presenter = FirstOpenPresenter(this)
 
-        initControl()
         initData()
-    }
-
-    private fun initControl() {
-        first_open_submit_button.setOnClickListener {
-            presenter.onSubmitClick()
-        }
     }
 
     private fun initData() {
@@ -102,8 +98,29 @@ class FirstOpenActivity: AppCompatActivity(), IFirstOpenContract.IFirstOpenView 
         presenter.onBackPressedClick()
     }
 
-    override fun makeToastWithText(str: String) =
-        Toast.makeText(this, str, Toast.LENGTH_SHORT).show()
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_confirm, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        presenter.onSubmitClick()
+        return true
+    }
+
+
+    override fun makeToastWithText(str: String) {
+        MaterialAlertDialogBuilder(this)
+            .setTitle("Помилка")
+            .setMessage(str)
+            .setPositiveButton(
+                R.string.OK
+            ) { dialog, _ ->
+                dialog.dismiss()
+            }
+            .show()
+    }
 
     override fun getMyLayoutInflater() = layoutInflater
 

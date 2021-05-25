@@ -10,7 +10,6 @@ import com.medicalapp.donorua.R
 import com.medicalapp.donorua.ui.info.InfoActivity
 import com.medicalapp.donorua.ui.main.fragment.centers.CentersFragment
 import com.medicalapp.donorua.ui.main.fragment.checks.ChecksFragment
-import com.medicalapp.donorua.ui.main.fragment.home.HomeFragment
 import com.medicalapp.donorua.ui.main.fragment.profile.ProfileFragment
 import com.medicalapp.donorua.ui.notification.NotificationSetterActivity
 import com.medicalapp.donorua.ui.registration.FirstOpenActivity
@@ -33,18 +32,17 @@ class MainActivity : AppCompatActivity() {
     private fun initBottomNavListener() {
         bottom_navigation.setOnNavigationItemSelectedListener {
             simpleNavigate(when (it.itemId) {
-                R.id.nav_home -> HomeFragment()
                 R.id.nav_centers -> CentersFragment()
                 R.id.nav_checks -> ChecksFragment()
                 R.id.nav_profile -> ProfileFragment()
-                else -> HomeFragment()
+                else -> CentersFragment()
             })
             return@setOnNavigationItemSelectedListener true
         }
     }
 
     private fun setFirstOpenedPage() {
-        simpleNavigate(HomeFragment())
+        simpleNavigate(CentersFragment())
     }
 
     @SuppressLint("ShowToast")
@@ -65,8 +63,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initNavigationDrawer() {
-        activity_main_navigation_drawer.setNavigationItemSelectedListener {
-            when (it.itemId) {
+        topAppBar.setNavigationOnClickListener {
+            drawerLayout.openDrawer(activity_main_navigation_drawer)
+        }
+
+        activity_main_navigation_drawer.setNavigationItemSelectedListener { menuItem ->
+            drawerLayout.closeDrawer(activity_main_navigation_drawer)
+
+            when (menuItem.itemId) {
                 R.id.drawer_menu_item_find_center -> {
                     goSearchActivityWithAction(SearchActivity.ACTION_SHOW_ALL_CENTERS)
                 }
@@ -79,9 +83,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.drawer_menu_item_notification -> {
                     simpleNavigate(NotificationSetterActivity::class.java)
                 }
-                else -> {
-
-                }
+                else -> { }
             }
             return@setNavigationItemSelectedListener true
         }

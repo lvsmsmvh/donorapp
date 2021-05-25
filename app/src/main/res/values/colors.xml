@@ -4,7 +4,7 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="red">#ff4444</color>
-    <color name="red_light">#f88</color>
+    <color name="red_light">#fcc</color>
 
     <color name="green">#4b4</color>
     <color name="green_light">#6c6</color>
@@ -22,4 +22,6 @@
 
     <color name="title_color">#84D6DE</color>
     <color name="subtitle_color">#B0E7EF</color>
+
+    <color name="status_bar_color">#992928</color>
 </resources>

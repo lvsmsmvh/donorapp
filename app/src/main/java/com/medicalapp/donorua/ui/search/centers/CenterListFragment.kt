@@ -8,6 +8,8 @@ import com.medicalapp.donorua.R
 import com.medicalapp.donorua.model.center.DonorCenter
 import com.medicalapp.donorua.ui.search.SearchActivity
 import com.medicalapp.donorua.utils.extensions.centersStorage
+import com.medicalapp.donorua.utils.extensions.hide
+import com.medicalapp.donorua.utils.extensions.show
 import com.medicalapp.donorua.utils.extensions.sortCentersByAlphabet
 import kotlinx.android.synthetic.main.fragment_center_list.*
 
@@ -23,6 +25,13 @@ class CenterListFragment(
     }
 
     private fun initData(list: List<DonorCenter>) {
+        if (list.isEmpty()) {
+            center_list_recycler_view.hide()
+            return
+        }
+
+        center_list_recycler_view.show()
+
         val centerListAdapter = CenterListAdapter()
 
         centerListAdapter.set(

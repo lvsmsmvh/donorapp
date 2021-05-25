@@ -19,6 +19,8 @@
             android:textColor="@color/black"
             android:layout_gravity="center_horizontal"
             android:layout_marginVertical="30dp"
+            android:gravity="center"
+            android:layout_marginHorizontal="40dp"
             android:text="@string/input_your_data"/>
 
         <androidx.appcompat.widget.AppCompatEditText
@@ -87,22 +89,8 @@
             android:id="@+id/first_open_date_picker"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:calendarViewShown="false"
             android:datePickerMode="spinner"/>
-
-
-        <Button
-            android:id="@+id/first_open_submit_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_btn_submit"
-            android:drawableLeft="@drawable/ic_agree"
-            android:drawableTint="@color/white"
-            android:text="@string/go_next"
-            android:paddingVertical="14dp"
-            android:textColor="@color/white"
-            android:textSize="14sp"
-            android:layout_marginVertical="5dp"
-            tools:ignore="RtlHardcoded" />
     </LinearLayout>
 </ScrollView>

@@ -9,36 +9,7 @@
     tools:openDrawer="start"
     tools:context=".ui.main.MainActivity">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-        <FrameLayout
-            android:id="@+id/fragment_container"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@id/bottom_navigation"/>
-
-        <com.cesar.materialcomponents.Banner
-            android:id="@+id/banner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#ccc"
-            android:visibility="gone"
-            app:bannerBackgroundColor="@color/green_weird"
-            app:icon="@drawable/ic_reg"
-            app:contentText="@string/reg_please"
-            app:leftButtonText="@string/later"
-            app:rightButtonText="@string/OK"/>
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottom_navigation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:layout_alignParentBottom="true"
-            app:menu="@menu/bottom_navigation"/>
-    </RelativeLayout>
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -59,11 +30,40 @@
                 style="@style/Widget.MaterialComponents.Toolbar.PrimarySurface"
                 android:background="@android:color/transparent"
                 android:elevation="0dp" />
-
         </com.google.android.material.appbar.AppBarLayout>
 
+        <RelativeLayout
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <FrameLayout
+                android:id="@+id/fragment_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@id/bottom_navigation"/>
+
+            <com.cesar.materialcomponents.Banner
+                android:id="@+id/banner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ccc"
+                android:visibility="gone"
+                app:bannerBackgroundColor="@color/green_weird"
+                app:icon="@drawable/ic_reg"
+                app:contentText="@string/reg_please"
+                app:leftButtonText="@string/later"
+                app:rightButtonText="@string/OK"/>
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottom_navigation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_alignParentBottom="true"
+                app:menu="@menu/bottom_navigation"/>
+        </RelativeLayout>
         <!-- Screen content -->
-        <!-- Use app:layout_behavior="@string/appbar_scrolling_view_behavior" to fit below top app bar -->
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

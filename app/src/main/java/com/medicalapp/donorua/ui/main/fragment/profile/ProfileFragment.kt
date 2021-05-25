@@ -32,7 +32,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile),
 
     override fun setProfileIcon(resourceId: Int) {
         fragment_profile_picture.setImageDrawable(
-            activity!!.drawable(resourceId)
+            requireActivity().drawable(resourceId)
         )
     }
 
@@ -53,5 +53,5 @@ class ProfileFragment : Fragment(R.layout.fragment_profile),
     }
 
     override fun navigateToEditActivity() =
-        activity!!.simpleNavigateAndFinishAfter(FirstOpenActivity::class.java)
+        requireActivity().simpleNavigateAndFinishAfter(FirstOpenActivity::class.java)
 }

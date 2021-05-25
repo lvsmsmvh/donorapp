@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Донор+</string>
     <string name="go_next">Продовжити</string>
-    <string name="input_your_data">Введіть особисті дані</string>
+    <string name="input_your_data">Введіть особисті дані для реєстрації</string>
     <string name="name">Ім\'я</string>
     <string name="surname">Прізвище</string>
     <string name="input_your_blood_type">Вкажіть Вашу групу крові:</string>
