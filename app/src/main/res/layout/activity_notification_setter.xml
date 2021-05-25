@@ -45,20 +45,27 @@
         android:layout_marginTop="50dp"
         app:cardCornerRadius="35dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:layout_marginVertical="10dp"
-            android:layout_marginHorizontal="25dp"
-            android:textColor="@color/black"
-            android:text="За скільки часу нагадати:"/>
-
-        <RadioGroup
-            android:id="@+id/activity_notification_setter_radio_button_container"
-            android:layout_marginHorizontal="25dp"
-            android:layout_marginVertical="10dp"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:layout_marginVertical="15dp"
+                android:layout_marginHorizontal="25dp"
+                android:textColor="@color/black"
+                android:text="За скільки часу нагадати:"/>
+
+            <RadioGroup
+                android:id="@+id/activity_notification_setter_radio_button_container"
+                android:layout_marginHorizontal="25dp"
+                android:layout_marginVertical="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
     </com.google.android.material.card.MaterialCardView>
 </LinearLayout>

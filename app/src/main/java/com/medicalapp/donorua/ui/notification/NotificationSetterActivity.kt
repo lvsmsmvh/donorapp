@@ -46,8 +46,11 @@ class NotificationSetterActivity: AppCompatActivity() {
         PeriodBeforeSending.values().forEachIndexed { index, periodBeforeSending ->
             val radioButton = RadioButton(this)
             radioButton.text = periodBeforeSending.text
-            if (index == 2) radioButton.isChecked = true
             activity_notification_setter_radio_button_container.addView(radioButton)
+            if (index == 2) {
+                radioButton.isChecked = true
+                this.periodBeforeSending = periodBeforeSending
+            }
         }
 
         // set selected item
@@ -119,7 +122,6 @@ class NotificationSetterActivity: AppCompatActivity() {
         menu.findItem(R.id.menu_confirm_button_agree).isVisible = true
     }
 
-
     private fun tryToSave() {
         MaterialAlertDialogBuilder(this)
             .setTitle("Запланувати повідомлення?")
@@ -139,7 +141,7 @@ class NotificationSetterActivity: AppCompatActivity() {
 
     private fun getConfirmationText() =
         "Дата: " + visitTime!!.getDateInStringFormat() +
-                "\nЧас: " + visitTime!!.getTimeInStringFormat() +
+                "\nЧас: $hour:$minute" +
                 "\n\nЗі звуком: " + (if (withSound) "Так" else "Ні") +
                 "\n\nНагадати за: " + periodBeforeSending!!.text
 
