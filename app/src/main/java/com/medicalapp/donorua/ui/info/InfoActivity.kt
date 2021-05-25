@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.medicalapp.donorua.R
-import com.medicalapp.donorua.ui.infodetails.InfoDetailsActivity
 import kotlinx.android.synthetic.main.activity_info.*
 
 

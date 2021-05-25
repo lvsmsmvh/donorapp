@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import com.medicalapp.donorua.R
 import com.medicalapp.donorua.ui.search.SearchActivity
 import com.medicalapp.donorua.utils.extensions.centersStorage
+import com.medicalapp.donorua.utils.extensions.checksStorage
 import com.medicalapp.donorua.utils.extensions.simpleNavigate
 import kotlinx.android.synthetic.main.fragment_centers.*
 
@@ -31,7 +32,11 @@ class CentersFragment : Fragment(R.layout.fragment_centers),
 
     private fun initControl() {
         fragment_centers_btn_find_centers.setOnClickListener {
-            presenter.onFindCentersClick()
+            requireActivity().startActivity(
+                Intent(requireContext(), SearchActivity::class.java).apply {
+                    action = SearchActivity.ACTION_SHOW_ALL_CENTERS
+                }
+            )
         }
 
         fragment_centers_btn_my_centers.setOnClickListener {
@@ -42,6 +47,7 @@ class CentersFragment : Fragment(R.layout.fragment_centers),
             )
         }
     }
+
 
     override fun makeToast(text: String) {
         Toast.makeText(requireContext(), text + "", Toast.LENGTH_SHORT).show()

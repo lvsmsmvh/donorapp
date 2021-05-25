@@ -58,11 +58,11 @@ class SharedPrefsHelper(context: Context) {
         sharedPreferences.edit().putString(SHARED_PREFS_DONOR_CENTER, str).apply()
     }
 
-    fun getListOfCenters(): List<DonorCenter>? {
+    fun getListOfCenters(): List<DonorCenter> {
         sharedPreferences.getString(SHARED_PREFS_DONOR_CENTER, null)?.let { str ->
             return parseListOfCentersFromStr(str)
         }
-        return null
+        return emptyList()
     }
 
 

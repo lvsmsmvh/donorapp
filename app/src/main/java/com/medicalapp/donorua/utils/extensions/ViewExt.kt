@@ -14,12 +14,12 @@ fun View.hide() {
     visibility = View.GONE
 }
 
-fun Button.makeUnclickable() {
+fun View.makeUnclickable() {
     alpha = 0.5f
     isClickable = false
 }
 
-fun Button.makeClickable() {
+fun View.makeClickable() {
     alpha = 1f
     isClickable = true
 }

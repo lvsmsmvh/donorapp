@@ -2,8 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/activity_add_check_menu"
-        android:actionLayout="@layout/layout_for_menu_ok"
+        android:id="@+id/menu_confirm_button_agree"
+        android:icon="@drawable/ic_agree"
+        android:iconTint="@color/white"
         android:orderInCategory="100"
         app:showAsAction="always"
         android:title="@string/OK"/>

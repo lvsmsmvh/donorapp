@@ -1,4 +1,4 @@
-package com.medicalapp.donorua.ui.addcheck.capture
+package com.medicalapp.donorua.ui.check.capture
 
 import android.app.Activity
 import android.content.Intent

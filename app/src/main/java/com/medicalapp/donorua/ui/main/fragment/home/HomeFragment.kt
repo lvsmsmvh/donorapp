@@ -1,16 +1,11 @@
 package com.medicalapp.donorua.ui.main.fragment.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.medicalapp.donorua.R
-import com.medicalapp.donorua.ui.addcheck.capture.CaptureReceiptActivity
 import com.medicalapp.donorua.ui.info.InfoActivity
-import com.medicalapp.donorua.utils.helper.DonorCentersStorage
-import com.medicalapp.donorua.utils.extensions.centersStorage
 import com.medicalapp.donorua.utils.extensions.simpleNavigate
-import com.medicalapp.donorua.utils.extensions.toListOfRegions
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment(R.layout.fragment_home),

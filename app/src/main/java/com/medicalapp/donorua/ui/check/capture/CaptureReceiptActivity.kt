@@ -1,4 +1,4 @@
-package com.medicalapp.donorua.ui.addcheck.capture
+package com.medicalapp.donorua.ui.check.capture
 
 import android.content.Intent
 import android.net.Uri
@@ -6,7 +6,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LifecycleOwner
 import com.medicalapp.donorua.R
-import com.medicalapp.donorua.ui.addcheck.analyzer.ImageAnalyzerActivity
+import com.medicalapp.donorua.ui.check.analyzer.ImageAnalyzerActivity
 import com.medicalapp.donorua.utils.extensions.makeClickable
 import com.medicalapp.donorua.utils.extensions.makeUnclickable
 import kotlinx.android.synthetic.main.activity_capture_receipt.*

@@ -38,30 +38,35 @@
             android:name=".ui.registration.FirstOpenActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
-        <activity android:name=".ui.infodetails.InfoDetailsActivity"
+        <activity android:name=".ui.info.InfoDetailsActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
-        <activity android:name=".ui.addcheck.capture.CaptureReceiptActivity"
+        <activity android:name=".ui.check.capture.CaptureReceiptActivity"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".ui.addcheck.analyzer.ImageAnalyzerActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ui.check.analyzer.ImageAnalyzerActivity"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"/>
         <activity android:name=".ui.info.InfoActivity"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"/>
         <activity android:name=".ui.search.SearchActivity"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"/>
         <activity android:name=".ui.center.CenterActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
-        <activity android:name=".ui.addcheck.addinfo.AddCheckActivity"
+        <activity android:name=".ui.check.addinfo.EditCheckActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
+        <activity android:name=".ui.check.fullscreen.FullScreenImageActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ui.notification.NotificationSetterActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"/>
+
+        <receiver android:name=".utils.helper.notification.PushNotificationReceiver"
+            android:exported="false" />
     </application>
 </manifest>

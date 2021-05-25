@@ -1,4 +1,4 @@
-package com.medicalapp.donorua.ui.addcheck.capture
+package com.medicalapp.donorua.ui.check.capture
 
 import android.Manifest
 import android.content.Intent
@@ -32,8 +32,10 @@ class CaptureReceiptPresenter(
         private const val TAG = "CameraXBasic"
         private const val FILENAME_FORMAT = "yyyy-MM-dd-HH-mm-ss-SSS"
         private const val pickImageCode = 9
-        private const val REQUEST_CODE_PERMISSIONS = 10
-        private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
+        private const val REQUEST_CODE_PERMISSIONS_CAMERA = 10
+        private val REQUIRED_PERMISSIONS_CAMERA = arrayOf(Manifest.permission.CAMERA)
+        private const val REQUEST_CODE_PERMISSIONS_READ = 11
+        private val REQUIRED_PERMISSIONS_READ = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE)
     }
 
     private lateinit var outputDirectory: File
@@ -44,11 +46,11 @@ class CaptureReceiptPresenter(
     private var activity = view.getActivityInstance()
 
     override fun requestCameraPermission() {
-        if (allPermissionsGranted()) {
+        if (cameraPermissionsGranted()) {
             startCamera()
         } else {
             ActivityCompat.requestPermissions(
-                activity, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS
+                activity, REQUIRED_PERMISSIONS_CAMERA, REQUEST_CODE_PERMISSIONS_CAMERA
             )
         }
 
@@ -57,7 +59,32 @@ class CaptureReceiptPresenter(
         cameraExecutor = Executors.newSingleThreadExecutor()
     }
 
-    private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
+
+    private fun openGalleryIfGranted(askForPermission: Boolean = false) {
+        if (readPermissionsGranted()) {
+            val intent = Intent(
+                Intent.ACTION_PICK,
+                MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+            )
+            intent.type = "image/*"
+            intent.putExtra("return-data", true)
+            activity.startActivityForResult(intent, pickImageCode)
+            return
+        }
+
+        if (askForPermission)
+            ActivityCompat.requestPermissions(
+                activity, REQUIRED_PERMISSIONS_READ, REQUEST_CODE_PERMISSIONS_READ
+            )
+    }
+
+
+    private fun cameraPermissionsGranted() = REQUIRED_PERMISSIONS_CAMERA.all {
+        ContextCompat.checkSelfPermission(
+            activity.baseContext, it) == PackageManager.PERMISSION_GRANTED
+    }
+
+    private fun readPermissionsGranted() = REQUIRED_PERMISSIONS_READ.all {
         ContextCompat.checkSelfPermission(
             activity.baseContext, it) == PackageManager.PERMISSION_GRANTED
     }
@@ -70,13 +97,7 @@ class CaptureReceiptPresenter(
     }
 
     override fun clickChoosePhoto() {
-        val intent = Intent(
-            Intent.ACTION_PICK,
-            MediaStore.Images.Media.INTERNAL_CONTENT_URI
-        )
-        intent.type = "image/*"
-        intent.putExtra("return-data", true)
-        activity.startActivityForResult(intent, pickImageCode)
+        openGalleryIfGranted(askForPermission = true)
     }
 
     private fun startCamera() {
@@ -136,14 +157,10 @@ class CaptureReceiptPresenter(
         imageCapture.takePicture(
             outputOptions, ContextCompat.getMainExecutor(activity), object : ImageCapture.OnImageSavedCallback {
                 override fun onError(exc: ImageCaptureException) {
-                    Log.e(TAG, "Photo capture failed: ${exc.message}", exc)
                     view.enableClicks()
                 }
 
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
-                    val msg = "Photo capture succeeded."
-                    Toast.makeText(activity.baseContext, msg, Toast.LENGTH_SHORT).show()
-                    Log.d(TAG, msg)
                     gotUri(uri = Uri.fromFile(photoFile))
                 }
             })
@@ -156,6 +173,7 @@ class CaptureReceiptPresenter(
     }
 
     private fun gotUri(uri: Uri) {
+        Log.i("tag_uri", "Got uri : " + uri.toString())
         view.openOutputReceiptActivity(uri)
         view.enableClicks()
     }
@@ -165,15 +183,15 @@ class CaptureReceiptPresenter(
         permissions: Array<out String>,
         grantResults: IntArray
     ) {
-        if (requestCode != REQUEST_CODE_PERMISSIONS) return
-        Log.i(LogTags.TAG_PHOTO, "Permissions: " + permissions[0] + " grant res: " + grantResults[0])
-        if (allPermissionsGranted()) {
-            startCamera()
-        } else {
-            Toast.makeText(activity,
-                "Permissions not granted by the user.",
-                Toast.LENGTH_SHORT).show()
-            activity.finish()
+        when (requestCode) {
+            REQUEST_CODE_PERMISSIONS_CAMERA -> {
+                if (cameraPermissionsGranted()) {
+                    startCamera()
+                } else activity.finish()
+            }
+            REQUEST_CODE_PERMISSIONS_READ -> {
+                openGalleryIfGranted(askForPermission = false)
+            }
         }
     }
 

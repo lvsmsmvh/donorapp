@@ -19,6 +19,10 @@ object Api {
     const val MAX_TIMEOUT_LOADING = 180 * 1000 // 3min
 }
 
+object Parameters {
+    const val isAcceptingAllChecks = true
+}
+
 const val ukrainianAlphabet = "0123456789" +
         "АаБбВвГгҐґДдЕе" +
         "ЄєЖжЗзИиІіЇїЙй" +

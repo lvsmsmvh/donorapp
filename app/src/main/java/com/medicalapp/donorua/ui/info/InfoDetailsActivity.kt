@@ -1,4 +1,4 @@
-package com.medicalapp.donorua.ui.infodetails
+package com.medicalapp.donorua.ui.info
 
 import android.content.Context
 import android.content.Intent
@@ -6,7 +6,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.medicalapp.donorua.R
-import com.medicalapp.donorua.ui.info.InfoEnum
 import kotlinx.android.synthetic.main.activity_info_details.*
 
 class InfoDetailsActivity: AppCompatActivity() {
