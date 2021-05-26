@@ -3,7 +3,7 @@ package com.medicalapp.donorua.utils.helper
 import com.medicalapp.donorua.App
 import com.medicalapp.donorua.model.center.DonorCenter
 
-class FavoriteCenters(val app: App) {
+class FavoriteCentersStorage(val app: App) {
 
     fun getList() = app.sharedPrefs.getListOfFavoriteCenters()
     fun saveList(list: List<DonorCenter>) = app.sharedPrefs.saveListOfFavoriteCenters(list)

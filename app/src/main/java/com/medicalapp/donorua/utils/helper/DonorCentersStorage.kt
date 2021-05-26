@@ -1,6 +1,5 @@
 package com.medicalapp.donorua.utils.helper
 
-import android.util.Log
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.medicalapp.donorua.App
@@ -8,7 +7,7 @@ import com.medicalapp.donorua.model.center.DonorCenter
 
 class DonorCentersStorage(val app: App) {
 
-    val favoriteCenters = FavoriteCenters(app)
+    val favoriteCenters = FavoriteCentersStorage(app)
 
     var listOfDonorCenter: List<DonorCenter> = emptyList()
         get() {

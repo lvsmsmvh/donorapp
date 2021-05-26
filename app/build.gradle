@@ -74,13 +74,6 @@ dependencies {
 
     // picasso
     implementation 'com.squareup.picasso:picasso:2.71828'
-
-    // fullscreen image
-//    implementation 'com.github.stfalcon:stfalcon-imageviewer:latest_version'
-//    implementation 'com.github.tntkhang:full-screen-image-view-library:1.1.0'
-//    implementation 'com.github.stfalcon:stfalcon-imageviewer:1.0.0'
-//    implementation 'com.github.chrisbanes:PhotoView:2.0.0'
-//    implementation 'com.github.chrisbanes:PhotoView:2.0.0'
 }
 
 repositories {
