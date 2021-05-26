@@ -42,7 +42,7 @@
                 <item
                     android:id="@+id/drawer_menu_item_notification"
                     android:icon="@drawable/ic_bell"
-                    android:title="Запланувати кроводачу"/>
+                    android:title="Запланувати донацію"/>
             </menu>
         </item>
     </group>
