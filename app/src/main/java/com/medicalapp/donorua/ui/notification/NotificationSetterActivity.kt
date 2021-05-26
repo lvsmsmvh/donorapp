@@ -1,7 +1,6 @@
 package com.medicalapp.donorua.ui.notification
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.RadioButton
@@ -15,11 +14,9 @@ import com.google.android.material.timepicker.TimeFormat
 import com.medicalapp.donorua.R
 import com.medicalapp.donorua.model.notification.NotificationVisit
 import com.medicalapp.donorua.model.notification.PeriodBeforeSending
-import com.medicalapp.donorua.utils.extensions.checksStorage
 import com.medicalapp.donorua.utils.extensions.getDateInStringFormat
-import com.medicalapp.donorua.utils.extensions.getTimeInStringFormat
 import com.medicalapp.donorua.utils.extensions.toCalendar
-import com.medicalapp.donorua.utils.helper.notification.NotificationHelper
+import com.medicalapp.donorua.ui.notification.utils.NotificationHelper
 import kotlinx.android.synthetic.main.activity_notification_setter.*
 import java.util.*
 
@@ -49,18 +46,8 @@ class NotificationSetterActivity: AppCompatActivity() {
             activity_notification_setter_radio_button_container.addView(radioButton)
             if (index == 2) {
                 radioButton.isChecked = true
-                this.periodBeforeSending = periodBeforeSending
             }
         }
-
-        // set selected item
-        activity_notification_setter_radio_button_container
-            .setOnCheckedChangeListener { group, checkedId ->
-                val radioButton = activity_notification_setter_radio_button_container
-                    .findViewById<RadioButton>(checkedId)
-
-                periodBeforeSending = PeriodBeforeSending.values().first { it.text == radioButton.text }
-            }
      }
 
 
@@ -122,7 +109,25 @@ class NotificationSetterActivity: AppCompatActivity() {
         menu.findItem(R.id.menu_confirm_button_agree).isVisible = true
     }
 
+    private fun collectDataFromUiElements() {
+        // periodBeforeSending
+
+        val radioId = activity_notification_setter_radio_button_container
+            .checkedRadioButtonId
+
+        val radioButton = activity_notification_setter_radio_button_container
+            .findViewById<RadioButton>(radioId)
+
+        periodBeforeSending = PeriodBeforeSending.values().first { it.text == radioButton.text }
+
+        // sound on notification
+
+        withSound = activity_notification_setter_switch_button_sound.isChecked
+    }
+
     private fun tryToSave() {
+        collectDataFromUiElements()
+
         MaterialAlertDialogBuilder(this)
             .setTitle("Запланувати повідомлення?")
             .setMessage(getConfirmationText())
@@ -156,6 +161,8 @@ class NotificationSetterActivity: AppCompatActivity() {
         )
 
         NotificationHelper.getInstance(this).setNotificationVisit(notificationVisit)
+
+//        NotificationHelper.getInstance(this).pushNotificationVisit(notificationVisit)
 
         finish()
     }

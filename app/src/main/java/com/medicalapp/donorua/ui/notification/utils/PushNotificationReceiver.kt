@@ -1,4 +1,4 @@
-package com.medicalapp.donorua.utils.helper.notification
+package com.medicalapp.donorua.ui.notification.utils
 
 import android.content.BroadcastReceiver
 import android.content.Context

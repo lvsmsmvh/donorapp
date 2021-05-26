@@ -1,9 +1,11 @@
-package com.medicalapp.donorua.utils.helper.notification
+package com.medicalapp.donorua.ui.notification.utils
 
 import android.app.*
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import androidx.core.app.NotificationCompat
+import com.medicalapp.donorua.R
 import com.medicalapp.donorua.model.notification.NotificationVisit
 import com.medicalapp.donorua.ui.splash.SplashActivity
 import com.medicalapp.donorua.utils.extensions.getTimeInStringFormat
@@ -30,9 +32,14 @@ class NotificationHelper private constructor(private val context: Context) {
             notificationTime,
             pendingIntent
         )
+
+        Log.i("tag_notif", "set notif: \n" +
+                "notif will trigger in " + notificationTime.toString() + " millis")
     }
 
     fun pushNotificationVisit(notificationVisit: NotificationVisit) {
+        Log.i("tag_notif", "push notif")
+
         val mIntent = Intent(context, SplashActivity::class.java)
             .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
 
@@ -48,6 +55,7 @@ class NotificationHelper private constructor(private val context: Context) {
             CHANNEL_WITH_SOUND_NAME else CHANNEL_NO_SOUND_NAME
 
         val notification = NotificationCompat.Builder(context, channelName)
+            .setSmallIcon(R.mipmap.ic_launcher)
             .setAutoCancel(true)
             .setContentTitle(title)
             .setContentText(description)

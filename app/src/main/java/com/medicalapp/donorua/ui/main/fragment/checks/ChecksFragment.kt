@@ -2,6 +2,8 @@ package com.medicalapp.donorua.ui.main.fragment.checks
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -62,13 +64,25 @@ class ChecksFragment: Fragment(R.layout.fragment_checks) {
         }
     }
 
+    private fun checkListActuality() {
+        activity?.let {
+            if (it.isFinishing) return
+
+            val isListActual = it.checksStorage().getList() == listOfChecks
+
+            if (!isListActual) {
+                initRecycler()
+            }
+        }
+
+    }
+
+
     override fun onResume() {
         super.onResume()
-        val isListActual = requireContext().checksStorage().getList() == listOfChecks
-
-        if (!isListActual) {
-            initRecycler()
-        }
+        Handler(Looper.getMainLooper()).postDelayed( { checkListActuality() } , 500)
+        Handler(Looper.getMainLooper()).postDelayed( { checkListActuality() } , 1000)
+        Handler(Looper.getMainLooper()).postDelayed( { checkListActuality() } , 2000)
     }
 
 

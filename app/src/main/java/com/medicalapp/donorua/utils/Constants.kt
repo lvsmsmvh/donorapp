@@ -20,7 +20,7 @@ object Api {
 }
 
 object Parameters {
-    const val isAcceptingAllChecks = true
+    const val isAcceptingAllChecks = false
 }
 
 const val ukrainianAlphabet = "0123456789" +

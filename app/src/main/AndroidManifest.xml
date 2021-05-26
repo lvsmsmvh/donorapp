@@ -67,7 +67,7 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
 
-        <receiver android:name=".utils.helper.notification.PushNotificationReceiver"
+        <receiver android:name=".ui.notification.utils.PushNotificationReceiver"
             android:exported="false" />
     </application>
 </manifest>
