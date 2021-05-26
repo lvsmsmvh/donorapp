@@ -21,7 +21,7 @@ class SharedPrefsHelper(context: Context) {
         Context.MODE_PRIVATE
     )
 
-    // fav centers
+    // checks
 
     fun saveListOfChecks(list: List<Check>) {
         val str = parseListOfChecksToStr(list)

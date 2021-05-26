@@ -8,17 +8,6 @@ object SharedPrefsConst {
     const val SHARED_PREFS_CHECKS = "checks"
 }
 
-object LogTags {
-    const val TAG_API = "tag_api"
-    const val TAG_PHOTO = "tag_photo"
-}
-
-object Api {
-    const val URL_DOMAIN = "https://donor.ua/"
-    const val PAGE_HOME = "centers/regions"
-    const val MAX_TIMEOUT_LOADING = 180 * 1000 // 3min
-}
-
 object Parameters {
     const val isAcceptingAllChecks = false
 }
