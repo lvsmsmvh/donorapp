@@ -59,8 +59,6 @@ class CenterActivity: AppCompatActivity(),
 
             setDescription(description)
         }
-
-        Log.i("tag_fav", centersStorage().favoriteCenters.getList().map { it.id }.toString())
     }
 
     private fun setInfoLinkItem(tv: TextView, text: String?, onClickListener: View.OnClickListener?) {
@@ -155,4 +153,3 @@ class CenterActivity: AppCompatActivity(),
         const val KEY_CENTER_ID = "center_id"
     }
 }
-
