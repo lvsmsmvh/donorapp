@@ -37,7 +37,7 @@ class SearchActivity: AppCompatActivity() {
             ACTION_SHOW_FAVORITE_CENTERS ->
                 navigateToCentersFragment(centersStorage().favoriteCenters.getList())
             else ->
-                navigateToRegionsFragment(centersStorage().listOfDonorCenter!!.toListOfRegions())
+                navigateToRegionsFragment(centersStorage().listOfDonorCenter.toListOfRegions())
         }
     }
 

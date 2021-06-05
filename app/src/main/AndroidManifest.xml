@@ -39,9 +39,6 @@
             android:name=".ui.registration.FirstOpenActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
-        <activity android:name=".ui.info.InfoDetailsActivity"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"/>
         <activity android:name=".ui.check.capture.CaptureReceiptActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
@@ -49,6 +46,9 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
         <activity android:name=".ui.info.InfoActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ui.info.InfoDetailsActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
         <activity android:name=".ui.search.SearchActivity"
